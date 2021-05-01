@@ -1,0 +1,447 @@
+/**
+ * B2G Tablet Shell Stylesheet.
+*/
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+body {
+  font-family: Helvetica, Sans-serif;
+  background-color: #000;
+  background-image: radial-gradient(closest-side, #434343 0%, #000 100%);
+  background-image: url(../images/firefox-os-background.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+body.windows-active {
+  background-color: #000;
+  background-image: none;
+}
+
+button::-moz-focus-inner {
+  border: 0; /* Prevent dotted outlines on buttons */
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Status Bar */
+#status-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#battery {
+  border: 0.1rem solid white;
+  height: 0.7rem;
+  width: 1.8rem;
+  margin: 0.8rem 0;
+  padding: 0;
+  border-radius: 0.1rem;
+  position: relative;
+  background: linear-gradient(90deg, white 100%, white 100%);
+  background-repeat: no-repeat;
+}
+
+#battery::after {
+  content: '';
+  background-color: #fff;
+  width: 0.3rem;
+  height: 0.5rem;
+  position: absolute;
+  display: block;
+  right: -0.3rem;
+  bottom: auto;
+  left: auto;
+  top: 0.1rem;
+  border-radius: 0.1rem;
+}
+
+#battery[data-charging-status="false"] {
+}
+
+#battery[data-charging-level="0"] {
+  background-size: 0;
+}
+#battery[data-charging-level="1"] {
+  background-image: linear-gradient(90deg, red 100%, red 100%);
+  background-size: 10%;
+}
+#battery[data-charging-level="2"] {
+  background-size: 20%;
+}
+#battery[data-charging-level="3"] {
+  background-size: 30%;
+}
+#battery[data-charging-level="4"] {
+  background-size: 40%;
+}
+#battery[data-charging-level="5"] {
+  background-size: 50%;
+}
+#battery[data-charging-level="6"] {
+  background-size: 60%;
+}
+#battery[data-charging-level="7"] {
+  background-size: 70%;
+}
+#battery[data-charging-level="8"] {
+  background-size: 80%;
+}
+#battery[data-charging-level="9"] {
+  background-size: 90%;
+}
+#battery[data-charging-level="10"] {
+  background-size: 100%;
+}
+
+#battery-charging-indicator {
+  width: 100%;
+  height: 100%;
+}
+
+#battery[data-charging-status="true"] #battery-charging-indicator {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: url(../images/charging.png);
+  background-size: 0.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#clock {
+  font-size: 1.1rem;
+  line-height: 2.5rem;
+  padding: 0 0.8rem;
+}
+
+body.windows-active #status-bar {
+  background-color: #000;
+}
+
+
+/* System Toolbar */
+#system-toolbar {
+  height: 3.2rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.windows-active #system-toolbar {
+  background-color: #000;
+}
+
+#system-toolbar button {
+  height: 1.6rem;
+  width: 5.6rem;
+  background: none;
+  border: none;
+  background-size: auto 1.6rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0.8rem 5rem;
+  box-sizing: content-box;
+  border-radius: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#system-toolbar button:active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#system-toolbar #back-button {
+  background-image: url('../images/back-light.png');
+}
+
+#system-toolbar #home-button {
+  background-image: url('../images/home-light.png');
+}
+
+#system-toolbar #windows-button {
+  background-image: url('../images/windows-light.png');
+}
+
+#system-toolbar #new-window-button {
+  display: none;
+  background-image: url('../images/new-window-light.png');
+}
+
+body.task-manager-active #system-toolbar #windows-button {
+  display: none;
+}
+
+body.task-manager-active #system-toolbar #new-window-button {
+  display: inline;
+}
+
+
+/* Home Screen */
+#home-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+}
+
+#home-screen.hidden {
+  display: none;
+}
+
+#home-screen #search-bar {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  height: 3.2rem;
+  font-size: 1.1rem;
+  border: none;
+  text-align: center;
+  margin: 2rem;
+  width: calc(100% - 4rem);
+  border-radius: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* #home-screen-frame {
+  flex: 1;
+  border: none;
+} */
+
+#home-screen #top-sites-list {
+  list-style-type: none;
+  margin: 0;
+  height: 500px;
+}
+
+/* Window Manager */
+#windows {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+}
+
+#windows.no-windows {
+  justify-content: center;
+}
+
+#windows p {
+  text-align: center;
+  font-size: 1.6rem;
+  display: none;
+}
+
+body.task-manager-active #windows.no-windows p {
+  display: block;
+}
+
+body.task-manager-active #windows {
+  display: flex;
+  flex-direction: column;
+  transform: scaleX(0.9) scaleY(0.9);
+  overflow: scroll;
+}
+
+
+/* Browser Window */
+.browser-window {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+body.task-manager-active .browser-window {
+  flex: 1;
+  display: flex;
+  margin-top: 1rem;
+}
+
+.browser-window.hidden {
+  display: none;
+}
+
+.browser-window iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background-color: #fff;
+}
+
+/*
+#keyboard {
+  transition: .3s ease-in-out;
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  bottom: 3.2rem;
+  transform: translateY(100%);
+}
+
+#keyboard.active {
+  transform: translateY(0);
+}
+
+body.task-manager-active #keyboard {
+  display: none;
+}
+
+#keyboard iframe {
+  background-color: transparent;
+}*/
+
+/* Virtual keyboard */
+
+#browser-window-keyboard {
+    position: absolute;
+    top: 0;
+    //height: 100%;
+    //width: 100%;
+    pointer-events: none;
+}
+
+#keyboard {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  pointer-events: none;
+}
+
+#keyboard.offscreen {
+  transform: translateY(100%);
+}
+
+.browser-window .window-scrim {
+  display: none;
+}
+
+body.task-manager-active .window-scrim {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  margin-top: -100%;
+  z-index: 1;
+}
+
+/* Browser Chrome */
+.browser-chrome {
+  display: flex;
+  flex-direction: row;
+  height: 4.2rem;
+  margin: 0;
+  padding: 0 0 0 0.8rem;
+  box-sizing: border-box;
+}
+
+body.task-manager-active .browser-chrome {
+  background-color: #333;
+  padding: 0.5rem 0 0 0.8rem;
+}
+
+
+body.task-manager-active .browser-chrome input {
+  background-color: transparent;
+}
+
+.browser-chrome form {
+  flex: 1;
+  height: 3.2rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.browser-chrome input {
+  width: 100%;
+  height: 3.2rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #999;
+  text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+.browser-chrome input.loading {
+  background-image: url(../images/loading.gif);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  background-size: 2.4rem;
+}
+
+.browser-chrome input:focus {
+  color: #fff;
+  text-align: left;
+}
+
+.browser-chrome input:focus.loading {
+  background-image: none;
+}
+
+.browser-chrome input:invalid {
+  box-shadow: none;
+}
+
+.browser-chrome button {
+  height: 3.2rem;
+  width: 4.2rem;
+  background: none;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 3.2rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+.browser-chrome button.menu-button {
+    background-image: url('../images/menu-light.png');
+}
+
+.browser-chrome button.close-button {
+    background-image: url('../images/close-light.png');
+    display: none;
+}
+
+.browser-chrome button.close-button:active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+body.task-manager-active #windows button.close-button {
+  z-index: 2;
+}
+
+body.task-manager-active .browser-chrome button.menu-button {
+  display: none;
+}
+
+body.task-manager-active .browser-chrome button.close-button {
+  display: block;
+}

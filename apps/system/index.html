@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/.  -->
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta charset="utf-8">
+    <title>B2G System</title>
+    <link rel="stylesheet" href="css/shell.css" type="text/css" />
+    <link rel="stylesheet" href="http://shared.localhost/css/scale.css" type="text/css" />
+    <link rel="stylesheet" href="http://shared.localhost/css/tile.css" type="text/css" />
+    <script type="text/javascript" src="js/System.js"></script>
+    <script type="text/javascript" src="js/StatusBar.js"></script>
+    <script type="text/javascript" src="js/HwButtons.js"></script>
+    <script type="text/javascript" src="js/PowerManager.js"></script>
+    <script type="text/javascript" src="js/BatteryManager.js"></script>
+    <script type="text/javascript" src="js/SystemToolbar.js"></script>
+    <script type="text/javascript" src="js/HomeScreen.js"></script>
+    <script type="text/javascript" src="js/WindowManager.js"></script>
+    <script type="text/javascript" src="js/SoundManager.js"></script>
+    <script type="text/javascript" src="js/BrowserWindow.js"></script>
+    <script type="text/javascript" src="js/KeyboardManager.js"></script>
+    <script type="text/javascript" src="js/PowerUtils.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/Places.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/Site.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/Tile.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/UrlHelper.js"></script>
+    <!-- api-deamon -->
+    <script src="http://127.0.0.1/api/v1/shared/core.js"></script>
+    <script src="http://127.0.0.1/api/v1/shared/session.js"></script>
+    <script src="http://127.0.0.1/api/v1/powermanager/service.js"></script>
+    <!-- embedding API provider -->
+    <script src="chrome://b2g/content/embedding/web-embedder.js"></script>
+    <script src="chrome://b2g/content/embedding/web-view.js"></script>
+    <!-- TODO:　embedding.js  -->
+    <script type="text/javascript" src="js/embedding.js" type="module"></script>
+        <script type="text/javascript" src="http://shared.localhost/js/test_channal.js"></script>
+  </head>
+  <body id="system">
+    <menu type="toolbar" id="status-bar">
+      <span id="clock"></span>
+      <div id="battery" data-charging-status="false" data-battery-level="0">
+        <div id="battery-charging-indicator"></div>
+      </div>
+    </menu>
+    <div id="home-screen">
+      <input id="search-bar" type="text" placeholder="Search or enter address"></input>
+      <!-- <iframe id="home-screen-frame" mozbrowser="true" transparent="true"></iframe> -->
+      <ul id="top-sites-list"></ul>
+    </div>
+    <div id="windows" class="hidden no-windows">
+      <p id="no-windows-message">No open windows</p>
+      <div id="browser-window-keyboard" class="browser-window">
+	<web-view
+		      class="offscreen"
+		      id="keyboard"
+		      ignoreuserfocus="true"
+		      mozpasspointerevents="true"
+		      transparent="true"
+		      src="http://keyboard.localhost/index.html">
+	</web-view>
+      </div>
+    </div>
+    <menu type="toolbar" id="system-toolbar">
+      <button id="back-button"></button>
+      <button id="home-button"></button>
+      <button id="windows-button"></button>
+      <button id="new-window-button"></button>
+    </menu>
+  </body>
+</html>
