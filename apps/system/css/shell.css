@@ -200,6 +200,7 @@ body.task-manager-active #system-toolbar #new-window-button {
   flex-direction: column;
   flex: 1;
   text-align: center;
+  height: 91%;
 }
 
 #home-screen.hidden {
@@ -209,7 +210,7 @@ body.task-manager-active #system-toolbar #new-window-button {
 #home-screen #search-bar {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.15);
-  height: 3.2rem;
+  height: 3.3rem;
   font-size: 1.1rem;
   border: none;
   text-align: center;
@@ -228,7 +229,8 @@ body.task-manager-active #system-toolbar #new-window-button {
 #home-screen #top-sites-list {
   list-style-type: none;
   margin: 0;
-  height: 500px;
+  height: 86%;
+  overflow-y: auto;
 }
 
 /* Window Manager */
@@ -285,28 +287,6 @@ body.task-manager-active .browser-window {
   border: none;
   background-color: #fff;
 }
-
-/*
-#keyboard {
-  transition: .3s ease-in-out;
-  position: absolute;
-  overflow: hidden;
-  pointer-events: none;
-  bottom: 3.2rem;
-  transform: translateY(100%);
-}
-
-#keyboard.active {
-  transform: translateY(0);
-}
-
-body.task-manager-active #keyboard {
-  display: none;
-}
-
-#keyboard iframe {
-  background-color: transparent;
-}*/
 
 /* Virtual keyboard */
 

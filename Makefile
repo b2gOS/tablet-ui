@@ -1,5 +1,5 @@
 ALL: clean build-webapps push-package
-     
+
 clean: 
 	- ./build/build.py clean
 

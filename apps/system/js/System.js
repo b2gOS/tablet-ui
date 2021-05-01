@@ -29,52 +29,7 @@ var System = {
 
 };
 
-function startup() {
-  // //Hack
-  // const { Services } = ChromeUtils.import(
-  //   "resource://gre/modules/Services.jsm"
-  // );
-  // // Grant "web-view" permission for system-app.
-  // Services.perms.addFromPrincipal(
-  //   Services.scriptSecurityManager.createContentPrincipalFromOrigin(
-  //     "chrome://b2g/content/minios/system/index.html"
-  //   ),
-  //   "web-view",
-  //   Ci.nsIPermissionManager.ALLOW_ACTION
-  // );
-  // // Grant "powersupply" permission for system-app.
-  // Services.perms.addFromPrincipal(
-  //   Services.scriptSecurityManager.createContentPrincipalFromOrigin(
-  //     "chrome://b2g/content/minios/system/index.html"
-  //   ),
-  //   "powersupply",
-  //   Ci.nsIPermissionManager.ALLOW_ACTION
-  // );
-  // // Grant "power" permission for system-app.
-  // Services.perms.addFromPrincipal(
-  //   Services.scriptSecurityManager.createContentPrincipalFromOrigin(
-  //     "chrome://b2g/content/minios/system/index.html"
-  //   ),
-  //   "power",
-  //   Ci.nsIPermissionManager.ALLOW_ACTION
-  // );
-  // // Grant "input" permission for system-app.
-  // Services.perms.addFromPrincipal(
-  //   Services.scriptSecurityManager.createContentPrincipalFromOrigin(
-  //     "chrome://b2g/content/minios/system/index.html"
-  //   ),
-  //   "input",
-  //   Ci.nsIPermissionManager.ALLOW_ACTION
-  // );
-  // // Grant "input" permission for keyboard-app.
-  // Services.perms.addFromPrincipal(
-  //   Services.scriptSecurityManager.createContentPrincipalFromOrigin(
-  //     "chrome://b2g/content/minios/keyboard/index.html"
-  //   ),
-  //   "input",
-  //   Ci.nsIPermissionManager.ALLOW_ACTION
-  // );
-  
+function startup() {  
   System.start();
 
   var readyEvent = {
@@ -90,14 +45,6 @@ function startup() {
   */
 window.addEventListener('load', function system_onLoad() {
   window.removeEventListener('load', system_onLoad);
-
-  // var home = document.getElementById('home-screen-frame');
-  // home.addEventListener('mozbrowserloadend', function home_loaded() {
-  //   home.removeEventListener('mozbrowserloadend', home_loaded);
-  //   console.debug('about:home has been loaded');
-  //   window.focus();
-  // });
-  // home.src = 'http://home.localhost/home.html';
 
   window.addEventListener('visibilitychange', function hasVisibilityChange(evt) {
     console.debug('>>>> SYSTEM APP VISIBILITYCHANGE', evt);

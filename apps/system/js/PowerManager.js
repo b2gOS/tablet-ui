@@ -29,16 +29,18 @@ var PowerManager = {
   },
 
   toggleScreen: function() {
-    console.debug('Toggling screen' + this._screenState );
-//     TODO:
-      //this._powerService.setScreenEnabled(!this._screenState);
-      if(this._screenState){
-        this._powerService.setScreenBrightness(0);
-      }else{
-        this._powerService.setScreenBrightness(100);
-      }
-      //this._powerService.setCpuSleepAllowed(!this._screenState);
-      this._screenState=!this._screenState
+    // console.debug('Toggling screen' + this._screenState );
+    this._powerService.setScreenEnabled(!this._screenState);
+    //this._powerService.setCpuSleepAllowed(!this._screenState);
+
+    // TODO: only for onyx
+    // if(this._screenState){
+    //     this._powerService.setScreenBrightness(0);
+    // }else{
+    //     this._powerService.setScreenBrightness(100);
+    // }
+
+    this._screenState =! this._screenState
   },
   
   setScreenBrightnessUp: function() {

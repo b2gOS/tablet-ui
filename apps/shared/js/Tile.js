@@ -15,7 +15,7 @@ var Tile = function(siteObject, target, pinned) {
   this.container = document.getElementById('top-sites-list');
   this.siteObject = siteObject;
   this.render(target, pinned);
-  this.broadcastChannel = new BroadcastChannel('tile');
+  this.broadcastChannel = new BroadcastChannel('openweb');
   return this;
 };
 
@@ -64,7 +64,6 @@ Tile.prototype.render = function(target, pinned) {
  */
 Tile.prototype.open = function() {
   // window.open(this.siteObject.startUrl);
-  console.log("####################################"+ this.broadcastChannel.name);
   this.broadcastChannel.postMessage(this.siteObject.startUrl);
   console.log('opening window at ' + this.siteObject.startUrl);
 };
