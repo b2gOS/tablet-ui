@@ -231,6 +231,7 @@ body.task-manager-active #system-toolbar #new-window-button {
   margin: 0;
   height: 86%;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 /* Window Manager */
@@ -259,6 +260,7 @@ body.task-manager-active #windows {
   flex-direction: column;
   transform: scaleX(0.9) scaleY(0.9);
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 
@@ -309,6 +311,7 @@ body.task-manager-active .browser-window {
 
 #keyboard.offscreen {
   transform: translateY(100%);
+  display: none;
 }
 
 .browser-window .window-scrim {

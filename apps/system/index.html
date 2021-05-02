@@ -7,7 +7,7 @@
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
     <meta charset="utf-8">
-    <title>B2G System</title>
+    <title>Tablet UI</title>
     <link rel="stylesheet" href="css/shell.css" type="text/css" />
     <link rel="stylesheet" href="http://shared.localhost/css/scale.css" type="text/css" />
     <link rel="stylesheet" href="http://shared.localhost/css/tile.css" type="text/css" />
@@ -31,9 +31,9 @@
     <script src="http://127.0.0.1/api/v1/shared/core.js"></script>
     <script src="http://127.0.0.1/api/v1/shared/session.js"></script>
     <script src="http://127.0.0.1/api/v1/powermanager/service.js"></script>
+    <script src="http://127.0.0.1/api/v1/time/service.js"></script>
     <!-- embedding API provider -->
     <script src="chrome://b2g/content/embedding/web-embedder.js"></script>
-    <!-- TODO:　embedding.js  -->
     <script type="text/javascript" src="js/Embedding.js" type="module"></script>
   </head>
   <body id="system">
@@ -45,9 +45,10 @@
     </menu>
     <div id="home-screen">
       <input id="search-bar" type="text" placeholder="Search or enter address"></input>
-      <!-- <iframe id="home-screen-frame" mozbrowser="true" transparent="true"></iframe> -->
+      <!-- TODO:　use <web-view> -->
       <ul id="top-sites-list"></ul>
     </div>
+    <!-- TODO:　use <web-view> -->
     <div id="windows" class="hidden no-windows">
       <p id="no-windows-message">No open windows</p>
       <div id="browser-window-keyboard" class="browser-window">

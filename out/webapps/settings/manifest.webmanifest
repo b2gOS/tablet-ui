@@ -24,7 +24,7 @@
       "powersupply":{},
       "input":{},
       "ime-connect":{},
-      "settings":{},
+      "settings": { "access": "readwrite" },
       "worker-activity":{},
       "system-time":{ "access": "readwrite" },
       "wifi-manage":{},

@@ -1,5 +1,38 @@
 [
   {
+    "name": "Settings",
+    "icons": [{
+      "src": "http://shared.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://settings.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
+    "name": "About:config",
+    "icons": [{
+      "src": "http://shared.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "about:config",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
+    "name": "daemon-api-sample",
+    "icons": [{
+      "src": "http://daemon-api-sample.localhost/icons/sample_112.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://daemon-api-sample.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
     "name": "Facebook",
     "icons": [{
       "src": "http://shared.localhost/defaults/icons/facebook.png",
@@ -144,27 +177,7 @@
     }],
     "start_url": "http://slither.io/",
     "background_color": "#282935"
-  },
-  {
-    "name": "Settings",
-    "icons": [{
-      "src": "http://settings.localhost/style/icons/settings_84.png",
-      "sizes": "75x75",
-      "type": "image/png"
-    }],
-    "start_url": "http://settings.localhost/index.html",
-    "theme_color": "#f4f4f4",
-    "background_color": "#f4f4f4"
-  },
-  {
-    "name": "About:config",
-    "icons": [{
-      "src": "",
-      "sizes": "75x75",
-      "type": "image/png"
-    }],
-    "start_url": "about:config",
-    "theme_color": "#f4f4f4",
-    "background_color": "#f4f4f4"
   }
 ]
+
+
