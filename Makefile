@@ -1,30 +1,38 @@
-ALL: clean build-webapps push-package
+ALL: build-clean build-webapps
 
-clean: 
+build: build-clean build-webapps 
+
+push-packages: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push-packages devices-reboot
+
+push: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push devices-reboot
+
+devices-remount:
+	- adb root
+	- adb remount
+
+devices-clean-b2g-data:
+	- adb shell rm -r  /data/b2g/
+	- adb shell rm -r /cache/cache2/
+
+devices-clean-profiles:
+	- adb shell rm -r  /data/local/webapps/ 
+	- adb shell rm -r  /system/b2g/webapps/ 
+
+devices-reboot:
+	- adb shell stop api-daemon && adb shell start api-daemon
+	- adb shell stop b2g && adb shell start b2g
+
+build-clean: 
 	- ./build/build.py clean
 
 build-webapps:
 	- ./build/build.py build
 
-push-package:
-	- adb remount
-	- adb root
-	- adb shell rm -r  /data/local/webapps/ 
-	- adb shell rm -r  /data/b2g/
-	- adb shell rm -r /cache/cache2
-	- adb shell rm -r  /system/b2g/webapps/ 
-	- adb push out/webapps/ /system/b2g/ 
-	- adb shell stop api-daemon && adb shell start api-daemon
-	- adb shell stop b2g && adb shell start b2g
+adb-push-packages:
+	- adb push out/webapps /system/b2g/ 
 
-push:
-	- adb remount
-	- adb root
-	- adb shell rm -r /cache/cache2
-	- adb shell rm -r  /data/local/webapps/ 
-	- adb shell rm -r  /data/b2g/
-	- adb shell rm -r  /system/b2g/webapps/*
+adb-push:
+	- adb shell mkdir /system/b2g/webapps/
 	- adb push apps/*  /system/b2g/webapps/
 	- adb push out/webapps/webapps.json /system/b2g/webapps/
-	- adb shell stop api-daemon && adb shell start api-daemon
-	- adb shell stop b2g && adb shell start b2g
+
