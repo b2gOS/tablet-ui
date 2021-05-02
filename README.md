@@ -1,6 +1,6 @@
-## Tablet-UI (The Tablet Project)
+## Tablet-UI (Former Tablet Project)
 
-#### Building 
+#### Building for devices
 
 - Building `B2GOS` for your devices
 
