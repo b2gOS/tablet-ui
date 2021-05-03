@@ -50,9 +50,13 @@ or talk to us on Matrix:
    ```shell
    # All webapps will be packaged and output to the `out` directory 
    make build
+
+   # Other command
    # Push all application.zip under out directory to device
    make push-package
-   # or only push just the application files
+   # Only push just the applications files to device
    make push
+   # Build with dev-apps
+   make DEVAPPS=1
    ```
 

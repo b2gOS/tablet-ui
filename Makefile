@@ -19,8 +19,10 @@ devices-clean-profiles:
 	- adb shell rm -r  /system/b2g/webapps/ 
 
 devices-reboot:
-	- adb shell stop api-daemon && adb shell start api-daemon
-	- adb shell stop b2g && adb shell start b2g
+	- adb shell stop api-daemon
+	- adb shell start api-daemon
+	- adb shell stop b2g
+	- adb shell start b2g
 
 build-clean: 
 	- ./build/build.py clean
@@ -35,4 +37,8 @@ adb-push:
 	- adb shell mkdir /system/b2g/webapps/
 	- adb push apps/*  /system/b2g/webapps/
 	- adb push out/webapps/webapps.json /system/b2g/webapps/
+ifeq ($(DEVAPPS),1)
+	- adb push dev-apps/*  /system/b2g/webapps/
+endif
+	@echo Done!
 

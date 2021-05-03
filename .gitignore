@@ -1,2 +1,2 @@
-out/webapps/*
-.note
+/out/webapps/*/*
+/.note
