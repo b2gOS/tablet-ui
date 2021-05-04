@@ -8,6 +8,7 @@ var BatteryManager = {
 
   handleChargingChange: function(e) {
     console.debug('handleChargingChange', e, this._bm.charging);
+    StatusBar.showNotification('handleChargingChange');
     this.sendBatteryEvent();
   },
 
@@ -21,10 +22,12 @@ var BatteryManager = {
     // this.sendBatteryEvent();
   },
 
-  handleLevelChange: function(e) {
-    console.debug('handleLevelChange', e, this._bm.level);
+  handlelevelchangeChange: function(e) {
+    console.debug('levelchange', e, this._bm.level);
+    StatusBar.showNotification('Batterylevelchange');
     this.sendBatteryEvent();
   },
+
 
   sendBatteryEvent: function() {
     var batteryEvent = new CustomEvent('_batterychange',
@@ -44,12 +47,13 @@ var BatteryManager = {
     navigator.getBattery().then(bm => {
       console.debug('Received a batteryManager!');
       this._bm = bm;
-      ['Charging', 'ChargingTime', 'DischargingTime', 'Level'].forEach(name => {
+      ['Charging', 'ChargingTime', 'DischargingTime', 'levelchange'].forEach(name => {
         let key = name.toLowerCase() + 'change';
         let hdl = 'handle' + name + 'Change';
         console.debug('Adding event handler', key, 'to', hdl);
         this._bm.addEventListener(key, this[hdl].bind(this));
       });
+
       setTimeout(() => {
         this.sendBatteryEvent();
       });

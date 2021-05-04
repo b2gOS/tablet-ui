@@ -22,7 +22,6 @@
     <script type="text/javascript" src="js/SoundManager.js"></script>
     <script type="text/javascript" src="js/BrowserWindow.js"></script>
     <script type="text/javascript" src="js/KeyboardManager.js"></script>
-    <script type="text/javascript" src="http://shared.localhost/js/system/PowerUtils.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/Places.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/Site.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/Tile.js"></script>
@@ -33,6 +32,9 @@
     <script src="http://127.0.0.1/api/v1/powermanager/service.js"></script>
     <script src="http://127.0.0.1/api/v1/time/service.js"></script>
     <script src="http://127.0.0.1/api/v1/audiovolumemanager/service.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/system/PowerUtils.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/system/AudioVolumeUtils.js"></script>
+    
     <!-- embedding API provider -->
     <script src="chrome://b2g/content/embedding/web-embedder.js"></script>
     <script type="text/javascript" src="js/Embedding.js" type="module"></script>
@@ -43,6 +45,8 @@
       <div id="battery" data-charging-status="false" data-battery-level="0">
         <div id="battery-charging-indicator"></div>
       </div>
+      <span id="battery-level">0%</span>
+      <span id="notification"></span>
     </menu>
     <div id="home-screen">
       <input id="search-bar" type="text" placeholder="Search or enter address"></input>

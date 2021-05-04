@@ -45,7 +45,7 @@
     },
 
     requestVolumeDown: function requestVolumeDown(callback) {
-      console.log('Calling reboot');
+      console.log('Calling requestVolumeDown');
       _audioVolumeManagerService.requestVolumeDown().then(() => {
         callback('success');
       }, () => {

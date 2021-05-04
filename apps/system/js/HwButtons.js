@@ -48,16 +48,11 @@ var HwButtons = {
       }
 
       case 'audiovolumeup':
-//         TODO
-        PowerManager.setScreenBrightnessUp();
+        SoundManager.setVolumeUp();
         break;
 
       case 'audiovolumedown':
-//         TODO
-//         if (evt.type === 'mozbrowserbeforekeydown' || evt.type === 'keydown') {
-//           window.dispatchEvent(new CustomEvent('_' + key.replace("audio", "")));
-//         }
-        PowerManager.setScreenBrightnessDown();
+        SoundManager.setVolumeDown();
         break;
 
       default:

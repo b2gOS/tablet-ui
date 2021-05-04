@@ -15,6 +15,8 @@ var StatusBar = {
     this.element = document.getElementById('status-bar');
     this.battery = document.getElementById('battery');
     this.clock = document.getElementById('clock');
+    this.battery_level = document.getElementById('battery-level');
+    this.notification = document.getElementById('notification');
 
     // Set the clock going
     this.updateClock(true);
@@ -53,8 +55,16 @@ var StatusBar = {
 
     this.battery.setAttribute('data-charging-status', evt.detail.charging);
 
-    let lvl = Math.floor(evt.detail.level * 10)
+    let lvl = Math.floor(evt.detail.level * 10);
     this.battery.setAttribute('data-charging-level', lvl);
+    this.battery_level.textContent = evt.detail.level*100 + '%' ;
+  },
+
+  showNotification: function(str){
+    this.notification.textContent = "Notification: " + str;
+    // setTimeout(() => {
+    //   this.notification.textContent = "";
+    // }, 3000);
   }
 
 };

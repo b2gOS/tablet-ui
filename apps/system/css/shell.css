@@ -125,11 +125,12 @@ button::-moz-focus-inner {
   background-repeat: no-repeat;
 }
 
-#clock {
+#status-bar span {
   font-size: 1.1rem;
   line-height: 2.5rem;
   padding: 0 0.8rem;
 }
+
 
 body.windows-active #status-bar {
   background-color: #000;
@@ -295,8 +296,8 @@ body.task-manager-active .browser-window {
 #browser-window-keyboard {
     position: absolute;
     top: 0;
-    //height: 100%;
-    //width: 100%;
+    height: 100%;
+    width: 100%;
     pointer-events: none;
 }
 

@@ -19,6 +19,7 @@ var System = {
     this.batteryManager = BatteryManager.start();
     this.hwButtons = HwButtons.start();
     this.keyboardManager = KeyboardManager.start();
+    window.focus()
 
     Places.start().then(function() {
       console.log('Started the Places database');
