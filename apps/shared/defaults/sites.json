@@ -11,6 +11,28 @@
     "background_color": "#f4f4f4"
   },
   {
+    "name": "Calendar",
+    "icons": [{
+      "src": "http://calendar.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://calendar.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
+    "name": "email",
+    "icons": [{
+      "src": "http://email.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://email.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
     "name": "About:config",
     "icons": [{
       "src": "http://shared.localhost/defaults/icons/settings.png",
@@ -29,6 +51,17 @@
       "type": "image/png"
     }],
     "start_url": "http://daemon-api-sample.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
+    "name": "Clock",
+    "icons": [{
+      "src": "http://clock.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://clock.localhost/index.html",
     "theme_color": "#f4f4f4",
     "background_color": "#f4f4f4"
   },

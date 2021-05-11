@@ -5,6 +5,9 @@
  * App need include following permission in manifest:
  *
  * "settings":{ "access": "readonly" }
+ * <script src="http://127.0.0.1/api/v1/shared/core.js"></script>
+ * <script src="http://127.0.0.1/api/v1/shared/session.js"></script>
+ * <script src="http://127.0.0.1/api/v1/settings/service.js"></script>
  */
 (function(){
   'use strict';
@@ -41,9 +44,13 @@
   var _kLocaleTime = 'locale.hour12';
   // update mozHour12 to real value
   var req = window.navigator.mozSettings.createLock().get(_kLocaleTime);
-  req.onsuccess = function() {
-    _setMozHour12(req.result[_kLocaleTime]);
-  };
+  this._settingsService.set(_kLocaleTime, (status, value) => {
+    console.log(`call set status ${status} value:`, value);
+  });
+
+  // req.onsuccess = function() {
+  //   _setMozHour12(req.result[_kLocaleTime]);
+  // };
   // monitor settings changes
-  window.navigator.mozSettings.addObserver(_kLocaleTime, _hour12Handler);
+  this._settingsService.addObserver(_kLocaleTime, _hour12Handler);
 })();
