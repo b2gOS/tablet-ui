@@ -2,9 +2,19 @@ ALL: build-clean build-webapps
 
 build: build-clean build-webapps 
 
-push-packages: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push-packages devices-reboot
+ifeq ($(findstring  attached , ${shell adb devices}), attached )
+push-packages:  devices-remount devices-clean-b2g-data devices-clean-profiles adb-push-packages devices-reboot
+else
+push-packages: 
+	@echo unknown which is your device!!!
+endif
 
+ifeq ($(findstring  attached , ${shell adb devices}), attached )
 push: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push devices-reboot
+else
+push: 
+	@echo unknown which is your device!!!
+endif
 
 devices-remount:
 	- adb root

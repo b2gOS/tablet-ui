@@ -52,7 +52,7 @@
     ],
     "core": true,
     "serviceworker": {
-      "script_url": "js/startup.js"
+      "script_url": "sw.js"
     },
     "version": "0.1"
   }

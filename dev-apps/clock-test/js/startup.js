@@ -246,6 +246,8 @@ require('shared/js/performance_testing_helper');
 var Tabs = require('tabs');
 var View = require('view');
 // var rAF = mozRequestAnimationFrame || requestAnimationFrame;
+var rAF = requestAnimationFrame;
+
 
 /**
  * Global Application event handling and paging
@@ -362,13 +364,13 @@ var App = {
           instance.visible = true;
           if (currentIndex !== -1 && currentIndex !== panelIndex) {
             var direction = currentIndex < panelIndex;
-            // rAF(function startAnimation(oldPanel) {
-            //   instance.transition =
-            //     direction ? 'slide-in-right' : 'slide-in-left';
+            rAF(function startAnimation(oldPanel) {
+              instance.transition =
+                direction ? 'slide-in-right' : 'slide-in-left';
 
-            //   oldPanel.instance.transition =
-            //     direction ? 'slide-out-left' : 'slide-out-right';
-            // }.bind(null, this.currentPanel));
+              oldPanel.instance.transition =
+                direction ? 'slide-out-left' : 'slide-out-right';
+            }.bind(null, this.currentPanel));
           }
           this.currentPanel = panel;
           callback && callback();
@@ -2408,6 +2410,14 @@ navigator.mozL10n.DateTimeFormat = function(locales, options) {
         case '%I':
           value = d.getHours() % 12 || 12;
           break;
+        
+        case '%H':
+            value = d.getHours();
+          break;
+        
+        case '%M':
+            value = d.getMinutes();
+          break;
 
         // like %d, without any leading zero
         case '%e':
@@ -2432,10 +2442,8 @@ navigator.mozL10n.DateTimeFormat = function(locales, options) {
 
         // other tokens don't require any localization
       }
-
       format = format.replace(tokens[i], value || d.toLocaleFormat(tokens[i]));
     }
-
     return format;
   }
 
@@ -2502,6 +2510,7 @@ navigator.mozL10n.DateTimeFormat = function(locales, options) {
     }
 
     if (secDiff > maxDiff) {
+      
       return localeFormat(new Date(time), '%x');
     }
 
@@ -3613,7 +3622,6 @@ var ClockView = {
     var remainMillisecond = (24 - d.getHours()) * 3600 * 1000 -
                             d.getMinutes() * 60 * 1000 -
                             d.getMilliseconds();
-
     this.dayDate.innerHTML = f.localeFormat(d, format);
 
     this.timeouts.dayDate = setTimeout(
@@ -3626,7 +3634,9 @@ var ClockView = {
 
     if (this.mode === 'digital') {
       this.updateDigitalClock(opts);
+      console.log("$$$$vv")
     } else {
+      console.log("bcvvvvvvvvvv")
       this.updateAnalogClock(opts);
     }
   },
@@ -3788,7 +3798,6 @@ var ClockView = {
         this.timeouts[previous]
       );
     }
-
     hiding.classList.remove('visible');
     showing.classList.add('visible');
 
@@ -4122,7 +4131,7 @@ define('banner/main',['require','template','utils','l10n','text!banner/banner.ht
         clearTimeout(this.timeout);
       }
       // After 4 seconds, remove the banner
-      this.timeout = setTimeout(this.hide.bind(this), 4000);
+      this.timeout = setTimeout(this.hide.bind(this), 1000);
     },
 
     hide: function bn_hide() {
@@ -4299,26 +4308,14 @@ define('alarm',['require','exports','module','constants','alarm_database','alarm
       return promise.then(() => alarmDatabase.put(this)).then(() => {
         return new Promise((resolve, reject) => {
           // Then, schedule the alarm.
+          //TODO
           // var req = navigator.mozAlarms.add(firedate, 'ignoreTimezone',
           //                                   { id: this.id, type: type });
-
-          var options ={
-                          "date": firedate,
-                          "data": {"note": "take a nap"},
-                          "ignoreTimezone": false
-                        };
-                                          
-          navigator.b2g.alarmManager.add(options).then(
-              (id) => console.log("add id: " + id),
-              (err) => console.log("add err: " + err)
-          );
-          
-
-          req.onerror = reject;
-          req.onsuccess = (evt) => {
-            this.registeredAlarms[type] = evt.target.result;
-            resolve();
-          };
+          // req.onerror = reject;
+          // req.onsuccess = (evt) => {
+          //   this.registeredAlarms[type] = evt.target.result;
+          //   resolve();
+          // };
         });
         // After scheduling the alarm, this.registeredAlarms has
         // changed, so we must save that too.
@@ -4340,8 +4337,8 @@ define('alarm',['require','exports','module','constants','alarm_database','alarm
       var alarmDatabase = require('alarm_database'); // circular dependency
       types.forEach((type) => {
         var id = this.registeredAlarms[type];
+        //TODO
         // navigator.mozAlarms.remove(id);
-        navigator.b2g.alarmManager.remove(id);
         delete this.registeredAlarms[type];
       });
       return alarmDatabase.put(this).then(() => {
@@ -4974,22 +4971,7 @@ Timer.prototype.register = function timerRegister(callback) {
 
   // Remove previously-created mozAlarm for this alarm, if necessary.
   this.unregister();
-
-var options ={
-    "date": new Date(Date.now() + this.remaining),
-    "data": {"note": "take a nap"},
-    "ignoreTimezone": false
-  };
-                    
-navigator.b2g.alarmManager.add(options).then(
-(id) => {console.log("add id: " + id);
-          this.id = id;
-          callback && callback(null, this);
-        },
-(err) => {console.log("add err: " + err)
-          callback && callback(err)}
-);
-
+//TODO
   // request = navigator.mozAlarms.add(
   //   new Date(Date.now() + this.remaining), 'ignoreTimezone', data
   // );
@@ -5021,8 +5003,8 @@ Timer.prototype.commit = function timerCommit(callback) {
 
 Timer.prototype.unregister = function timerUnregister() {
   if (typeof this.id === 'number') {
+    //TODO
     // navigator.mozAlarms.remove(this.id);
-    navigator.b2g.alarmManager.remove(this.id);
   }
 };
 
@@ -5338,17 +5320,18 @@ define('panels/alarm/active_alarm',['require','app','alarm_database','timer','ut
 
     // Handle the system's alarm event.
     // navigator.mozSetMessageHandler('alarm', this.onMozAlarm.bind(this));
-    navigator.serviceWorker.register("js/startup.js").then(registration => {
-    registration.systemMessageManager.subscribe("alarm").then(
-        rv => {
-          console.log('Successfully subscribe system messages of name "alarm".');
-          this.onMozAlarm.bind(this)
-        },
-        error => {
-          console.log("Fail to subscribe system message, error: " + error);
-        }
-      );
-    });
+    navigator.serviceWorker.register("../sw.js").then(registration => {
+      registration.systemMessageManager.subscribe("alarm").then(
+          rv => {
+            console.log('######Successfully subscribe system messages of name "alarm".');
+            this.onMozAlarm.bind(this)
+          },
+          error => {
+            console.log("####Fail to subscribe system message, error: " + error);
+          }
+        );
+      });
+  
 
     window.addEventListener('test-alarm', this.onMozAlarm.bind(this));
 
@@ -5374,18 +5357,8 @@ define('panels/alarm/active_alarm',['require','app','alarm_database','timer','ut
       });
       console.log('[Clock] -------------------------------------\n');
     });
-
+//TODO
     // var request = navigator.mozAlarms.getAll();
-    navigator.b2g.alarmManager.getAll().then(
-      (list) => {
-                  console.log('[Clock] -------------------------------------\n');
-                  console.log(list);
-                  list.forEach(function(alarm) {
-                    console.log('[Clock]   ', JSON.stringify(alarm));
-                  });
-                }, // Array of alarm objects.
-      (err) =>  console.error('[Clock] Failed to get list of b2g.alarmManager:')
-    );
     // request.onsuccess = function() {
     //   console.log('[Clock] ======= Remaining mozAlarms: ========\n');
 
