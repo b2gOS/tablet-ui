@@ -10,6 +10,8 @@ var Places = {
   SITES_STORE: 'sites',
   db: null,
   broadcastChannel: null,
+  appsManagerService: null,
+  appslist:[],
 
   /**
    * Start the Places Database.
@@ -62,6 +64,7 @@ var Places = {
 
     objectStore.transaction.oncomplete = (function() {
       console.log('Sites store created successfully');
+      // this.appsManagerInit();
       this.populate();
     }).bind(this);
   
@@ -70,6 +73,43 @@ var Places = {
     };
 
   },
+
+  // appsManagerInit: function(){
+  //   this.appsManagerService = new AppsServiceManager();
+  //   if (this.appsManagerService) {
+  //     setTimeout(() => {
+  //       this.updateAppslist();
+  //     }, 1000);
+  //   }
+  // },
+
+  // updateAppslist: function(){
+  //   this.appsManagerService.getAll((status, apps) => {
+  //     console.log(`call getAll status ${status} Apps:${apps}`);
+  //     apps.forEach((app) => {
+  //       const { name, manifestUrl } = app;
+  //       console.log(`app-name:${name} app-manifest:${manifestUrl}`);
+  //       this.appslist.push(name);
+  //       // this.updateSite("http://" + name + ".localhost/index.html","");
+  //               // Persist list of pinned sites in a special record
+  //       url = "http://" + name + ".localhost/index.html"
+  //       manifest = {
+  //                 "name": name,
+  //                 "icons": [{
+  //                   "src": "http://ui-elements.localhost/defaults/icons/settings.png",
+  //                   "sizes": "75x75",
+  //                   "type": "image/png"
+  //                 }],
+  //                 "start_url": url,
+  //                 "theme_color": "#f4f4f4",
+  //                 "background_color": "#f4f4f4"
+  //               };
+  //       siteObject = new Site(manifest);
+  //       this.addSite(siteObject);
+  //     });
+  //     console.log(this.appslist);
+  //   });
+  // },
 
   /**
    * Populate the database with default content.
@@ -99,7 +139,7 @@ var Places = {
     }).bind(this))
     .catch(function(error) {
       console.error('Failed to fetch default sites: ' + error.message);
-    });    
+    }); 
   },
 
   /*

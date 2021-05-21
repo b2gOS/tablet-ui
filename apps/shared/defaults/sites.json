@@ -11,6 +11,17 @@
     "background_color": "#f4f4f4"
   },
   {
+    "name": "test-setting",
+    "icons": [{
+      "src": "http://setting.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://test-setting.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
     "name": "About:config",
     "icons": [{
       "src": "http://shared.localhost/defaults/icons/settings.png",

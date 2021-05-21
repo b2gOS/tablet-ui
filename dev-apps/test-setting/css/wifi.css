@@ -1,0 +1,7 @@
+#wifi-status{
+    display: ruby;
+}
+
+#wifi-status li{
+    display: table;
+}

@@ -1,0 +1,10 @@
+<script type="text/javascript" src="http://shared.localhost/elements/b2g-button/b2g-button.js" defer></script>
+
+<b2g-button button-text="" button-id=""></b2g-button>
+|
+|
+|
+<b2g-button data-text="" button-id="">
+<link rel="stylesheet" href="http://shared.localhost/elements/b2g-button/b2g-button.css">
+<button id={button-id}> {data-text} </botton>
+</b2g-button>

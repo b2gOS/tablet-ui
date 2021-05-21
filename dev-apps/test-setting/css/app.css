@@ -1,0 +1,25 @@
+#app ul,
+#wifi-list ul{
+  display: -webkit-inline-box;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+#app ul > li,
+#wifi-list ul > li{
+  display: table;
+}
+
+#app > div,
+#wifi-list > div{
+  padding: 0px;
+  /* margin: 0px; */
+  border-block-color: darkgray;
+  border-top-width: 2px;
+  border-top-style: solid;
+  margin-bottom: 7px;
+}
+
+
+
