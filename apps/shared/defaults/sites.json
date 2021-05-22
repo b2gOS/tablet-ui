@@ -55,6 +55,17 @@
     "background_color": "#292929"
   },
   {
+    "name": "fm-test",
+    "icons": [{
+      "src": "http://fm.localhost/style/icons/camera_284.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://fm.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
     "name": "Clock-test",
     "icons": [{
       "src": "http://clock-test.localhost/style/icons/clock_126.png",
