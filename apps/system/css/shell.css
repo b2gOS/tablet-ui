@@ -257,7 +257,7 @@ body.task-manager-active #windows.no-windows p {
 }
 
 body.task-manager-active #windows {
-  display: flex;
+  display: inline;
   flex-direction: column;
   transform: scaleX(0.9) scaleY(0.9);
   overflow: scroll;
@@ -276,7 +276,7 @@ body.task-manager-active #windows {
 
 body.task-manager-active .browser-window {
   flex: 1;
-  display: flex;
+  display: inline-block;
   margin-top: 1rem;
 }
 
@@ -332,7 +332,7 @@ body.task-manager-active .window-scrim {
 }
 
 /* Browser Chrome */
-.browser-chrome {
+.browser-chrome{
   display: flex;
   flex-direction: row;
   height: 4.2rem;
@@ -340,6 +340,18 @@ body.task-manager-active .window-scrim {
   padding: 0 0 0 0.8rem;
   box-sizing: border-box;
 }
+
+sub-app[islocalapp="true"] .browser-chrome {
+  display: none;
+}
+
+body.task-manager-active sub-app .browser-chrome{
+  display: flex;
+}
+body.task-manager-active sub-app .browser-chrome form{
+  display: none;
+}
+
 
 body.task-manager-active .browser-chrome {
   background-color: #333;

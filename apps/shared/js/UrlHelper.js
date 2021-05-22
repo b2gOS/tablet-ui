@@ -14,6 +14,17 @@ var UrlHelper = {
     return (rscheme.exec(input) || [])[0];
   },
 
+
+  /**
+   * Check a URL is localapp.
+   *
+   * @param {String} input The string to test.
+   * @returns {String} true or false
+   */
+  isLoaclApp:function(input){
+    return ((/\.localhost/i).test(input) && !((/newtab.localhost/i).test(input)));
+  },
+
   /**
    * Does this string include a URL scheme?
    *

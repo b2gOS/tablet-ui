@@ -20,22 +20,6 @@ var BrowserWindow = function(id, url) {
   return this;
 };
 
-/** 
- * Window View.
- */
-BrowserWindow.prototype.view = function() {
-  return '<div id="window' + this.id + '" class="browser-window">' +
-    '<menu type="toolbar" class="browser-chrome">' +
-    '<form id="url-bar-form-' + this.id + '"" novalidate>' +
-    '<input type="url" id="url-bar-' + this.id + '" type="text"></input>' +
-    '</form>' +
-    '<button class="menu-button">' +
-    '<button id="close-button-' + this.id + '" class="close-button">' +
-    '</menu>' +
-    '<iframe id="window-frame-' + this.id + '" mozbrowser="true"></iframe>' +
-    '<div id="window-scrim-' + this.id + '" class="window-scrim"></div>' +
-    '</div>';
-};
 
 /**
  * Render the window.
@@ -43,7 +27,20 @@ BrowserWindow.prototype.view = function() {
  * @param {String} url URL to navigate window to.
  */
 BrowserWindow.prototype.render = function(url) {
-  this.container.insertAdjacentHTML('beforeend', this.view());
+  
+  // Navigate to URL
+  this.url = url;
+  if (!url) { 
+    this.url = "http://newtab.localhost/index.html" 
+  }
+
+  const isAppURL = UrlHelper.isLoaclApp(this.url); 
+
+  this.container.insertAdjacentHTML('beforeend',
+  `<sub-app id="window${this.id}" process-id=${this.id} appurl=${this.url} 
+   class="browser-window" islocalapp=${isAppURL}>
+   </sub-app>`
+  );
 
   // Get DOM elements
   this.element = document.getElementById('window' + this.id);
@@ -72,12 +69,6 @@ BrowserWindow.prototype.render = function(url) {
  this.closeButton.addEventListener('click', this.close.bind(this));
  this.scrim.addEventListener('click', this.handleScrimClick.bind(this));
 
- // Navigate to URL
- if (url) {
-  this.frame.src = url;
- } else {
-  this.frame.src="http://newtab.localhost/newtab.html";
- }
 };
 
 /**
@@ -237,12 +228,13 @@ BrowserWindow.prototype.handleUrlSubmit = function (e) {
   var input = this.urlBar.value;
   if (UrlHelper.isURL(input)) {
     if (UrlHelper.hasScheme(input)) {
-      this.frame.src = input;
+      this.frame.setAttribute('src',input);
     } else {
-     this.frame.src = 'http://' + input;
+      this.frame.setAttribute('src','http://' + input);
     }
   } else {
-    this.frame.src = 'https://google.com/search?q=' + input;
+    this.frame.setAttribute('src','https://google.com/search?q=' + input);
+
   }
   this.urlBar.blur();
 };

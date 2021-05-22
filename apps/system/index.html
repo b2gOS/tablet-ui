@@ -43,6 +43,10 @@
     <!-- embedding API provider -->
     <script src="chrome://b2g/content/embedding/web-embedder.js"></script>
     <script type="text/javascript" src="js/Embedding.js" type="module"></script>
+
+    <!-- elements -->
+    <script type="text/javascript" src="http://shared.localhost/elements/hos/system-manage/sub-app.js" defer></script>
+
   </head>
   <body id="system">
     <menu type="toolbar" id="status-bar">
@@ -58,18 +62,17 @@
       <!-- TODO:　use <web-view> -->
       <ul id="top-sites-list"></ul>
     </div>
-    <!-- TODO:　use <web-view> -->
     <div id="windows" class="hidden no-windows">
       <p id="no-windows-message">No open windows</p>
       <div id="browser-window-keyboard" class="browser-window">
-	<web-view
-		      class="offscreen"
-		      id="keyboard"
-		      ignoreuserfocus="true"
-		      mozpasspointerevents="true"
-		      transparent="true"
-		      src="http://keyboard.localhost/index.html">
-	</web-view>
+        <web-view
+                class="offscreen"
+                id="keyboard"
+                ignoreuserfocus="true"
+                mozpasspointerevents="true"
+                transparent="true"
+                src="http://keyboard.localhost/index.html">
+        </web-view>
       </div>
     </div>
     <menu type="toolbar" id="system-toolbar">
