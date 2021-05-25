@@ -27,16 +27,6 @@ or talk to us on Matrix:
 
 ##### Step 1: Building `B2GOS` for your devices
 
-​	In order to load to Tablet-UI, 
-
-​	you need to modify or add the following codes in the `gecko-b2g` :
-
-```javascript
-    // in /b2g/app/b2g.js
-    pref("b2g.neterror.url", "chrome://b2g/content/system/net_error.html");
-    pref("b2g.system_startup_url", "chrome://b2g/content/system/index.html");
-```
-
 ​	For details on how to build B2G, you can check [this section](https://github.com/b2gOS/B2G#buiding-for-devices).
 
 ###### Step 2: Building and pushing Tablet-UI to your devices
