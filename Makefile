@@ -3,14 +3,14 @@ ALL: build-clean build-webapps
 build: build-clean build-webapps 
 
 ifeq ($(findstring  attached , ${shell adb devices}), attached )
-push-packages:  devices-remount devices-clean-b2g-data devices-clean-profiles adb-push-packages devices-reboot
+push-packages:  devices-remount devices-clean-b2g-data devices-clean-profiles adb-push-packages adb-push-config devices-reboot
 else
 push-packages: 
 	@echo unknown which is your device!!!
 endif
 
 ifeq ($(findstring  attached , ${shell adb devices}), attached )
-push: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push devices-reboot
+push: devices-remount devices-clean-b2g-data devices-clean-profiles adb-push adb-push-config devices-reboot
 else
 push: 
 	@echo unknown which is your device!!!
@@ -51,4 +51,8 @@ ifeq ($(DEVAPPS),1)
 	- adb push dev-apps/*  /system/b2g/webapps/
 endif
 	@echo Done!
+
+
+adb-push-config:
+	- adb push config/*  /system/b2g/
 

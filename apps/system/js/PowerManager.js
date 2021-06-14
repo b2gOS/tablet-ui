@@ -18,6 +18,10 @@ var PowerManager = {
     this._powerService.powerOff();
   },
 
+  reboot: function() {
+    this._powerService.reboot();
+  },
+
   start: function() {
     this.powerScreen(true);
     this._powerService = new PowerServiceManager();
@@ -30,15 +34,28 @@ var PowerManager = {
 
   toggleScreen: function() {
     // console.debug('Toggling screen' + this._screenState );
-    this._powerService.setScreenEnabled(!this._screenState);
     //this._powerService.setCpuSleepAllowed(!this._screenState);
 
-    // TODO: only for onyx
-    // if(this._screenState){
-    //     this._powerService.setScreenBrightness(0);
-    // }else{
-    //     this._powerService.setScreenBrightness(100);
-    // }
+    ChromeUtils.import("resource://gre/modules/CustomHeaderInjector.jsm");
+
+    const { libcutils } = ChromeUtils.import("resource://gre/modules/systemlibs.js");
+
+    // libcutils.property_set("shell.ready", "1");
+
+    // deviceinfo.product_model
+
+    device = libcutils.property_get("ro.product.system.device")
+
+    if(device == "onyx"){
+      if(this._screenState){
+          this._powerService.setScreenBrightness(0);
+      }else{
+          this._powerService.setScreenBrightness(100);
+      }
+    }else{
+      this._powerService.setScreenEnabled(!this._screenState);
+    }
+    
 
     this._screenState =! this._screenState
   },

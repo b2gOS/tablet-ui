@@ -479,9 +479,13 @@ function hideOptionsView() {
 
 function clearSelection() {
   // Clear the selection, if there is one
-  Array.forEach(selectedFileNames, function(name) {
+  //todo
+  Array.prototype.forEach.call(selectedFileNames, (name)=>{
     thumbnailList.thumbnailMap[name].htmlNode.classList.remove('selected');
   });
+  // Array.forEach(selectedFileNames, function(name) {
+  //   thumbnailList.thumbnailMap[name].htmlNode.classList.remove('selected');
+  // });
   selectedFileNames = [];
   selectedFileNamesToBlobs = {};
   dom.thumbnailsDeleteButton.classList.add('disabled');

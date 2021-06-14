@@ -6,6 +6,7 @@ var SoundManager = {
 
   settings: null,
   _audioVolumeService: null,
+  volumebar: null,
 
   _channelsVolume: {
     'normal': 0,
@@ -36,7 +37,7 @@ var SoundManager = {
   },
 
   observeAudioVolumeChange: function(){
-    this._audioVolumeService.observeAudioVolumeChange(this.audioVolumeChangeCallback);
+    this._audioVolumeService.observeAudioVolumeChange(this.audioVolumeChangeCallback.bind(this));
   },
 
   unobserveAudioVolumeChange:function(){
@@ -44,19 +45,20 @@ var SoundManager = {
   },
 
   audioVolumeChangeCallback: function(data){
-    console.log('audio volume change callback', data);
-    StatusBar.showNotification("audio volume change callback:" + data);
+    console.log('audio volume change callback', data)
+    // this.getVolume()
+    this.volumebar = document.querySelector('volume-bar')
+    this.volumebar.show()
+    // StatusBar.showNotification("audio volume change callback:" + data);
   },
 
+
   start: function() {
-    this._audioVolumeService = new AudioVolumeServiceManager();
-    if (this._audioVolumeService) {
-      setTimeout(() => {
-        this.observeAudioVolumeChange();
-      }, 1000);
+    this._audioVolumeService = new AudioVolumeServiceManager()
+      window.setTimeout(()=>{
+        this.observeAudioVolumeChange()
+      },3000)
       return this;
-    }
-    return null;
   }
 
 };

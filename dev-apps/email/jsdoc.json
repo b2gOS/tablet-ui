@@ -1,9 +1,0 @@
-{
-  "email": {
-    "src": ["apps/email/js/**/*.js"],
-    "options": {
-      "destination": "docs/email"
-    }
-  }
-}
-

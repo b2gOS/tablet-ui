@@ -1,0 +1,42 @@
+/**
+ * B2G Tablet Shell Stylesheet.
+*/
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+body {
+  font-family: Helvetica, Sans-serif;
+  background-color: #000;
+  background-image: radial-gradient(closest-side, #434343 0%, #000 100%);
+  background-image: url(../images/firefox-os-background.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+body.windows-active {
+  background-color: #000;
+  background-image: none;
+}
+
+button::-moz-focus-inner {
+  border: 0; /* Prevent dotted outlines on buttons */
+}
+
+.hidden {
+  display: none;
+}
+
+
+.AppsInputMode {
+  height: 60%;
+}
+
+

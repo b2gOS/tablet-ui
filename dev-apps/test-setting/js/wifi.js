@@ -99,7 +99,7 @@ var Wifi = {
     // ### Connect to WPA/WPA2-PSK network
         var net = {
             ssid: ssid,
-            security: "WPA-PSK",
+            security: "WPA-EAP",
             psk: password,
         };
         console.log(ssid)

@@ -1,12 +1,23 @@
 [
   {
+    "name": "notes",
+    "icons": [{
+      "src": "http://shared.localhost/defaults/icons/settings.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://notes.localhost/index.html",
+    "theme_color": "#f4f4f4",
+    "background_color": "#f4f4f4"
+  },
+  {
     "name": "Settings",
     "icons": [{
       "src": "http://shared.localhost/defaults/icons/settings.png",
       "sizes": "75x75",
       "type": "image/png"
     }],
-    "start_url": "http://settings.localhost/index.html",
+    "start_url": "http://settings-gaia.localhost/index.html",
     "theme_color": "#f4f4f4",
     "background_color": "#f4f4f4"
   },
@@ -73,6 +84,72 @@
       "type": "image/png"
     }],
     "start_url": "http://clock-test.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "video-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://video.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "callscreen-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://callscreen.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "sms-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://sms.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "gallery-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://gallery.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "music-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://music.localhost/index.html",
+    "theme_color": "#292929",
+    "background_color": "#292929"
+  },
+  {
+    "name": "timer-test",
+    "icons": [{
+      "src": "http://clock-.localhost/style/icons/clock_126.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    }],
+    "start_url": "http://timer.localhost/index.html",
     "theme_color": "#292929",
     "background_color": "#292929"
   },

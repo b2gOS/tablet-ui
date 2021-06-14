@@ -1,0 +1,123 @@
+/* toaster */
+#toaster{
+    width: 100%;
+    background-color: blanchedalmond;
+    height: 50px;
+    position: absolute;
+    top: 25px;
+}
+
+#notification-toaster{
+    display: flex;
+    border-top-style: solid;
+    border-top-width: 0px;
+    margin-top: 2px;
+}
+
+#notification-toaster .icon{
+    background-color: #d23939;
+    height: 45px;
+    width: 20%;
+    margin: 1px;
+    margin-top: 0px;
+}
+
+#notification-toaster #message{
+    background-color: #63f400;
+    height: 45px;
+    width: 80%;
+    margin: 1px;
+    margin-top: 0px;
+}
+
+
+/* volume */
+#volume {
+    position: absolute;
+    background-color: brown;
+    top: 150px;
+    height: 270px;
+    width: 70px;
+}
+
+#volume #type{
+    background-color: blue;
+    width: 50px;
+    height: 20%;
+    margin: 10px;
+}
+
+#volume #value{
+    background-color: burlywood;
+    width: 50px;
+    height: 80%;
+    margin: 10px;
+}
+
+
+
+/* sleep-menu  */
+sleep-menu #sricm{
+    background-color: #27fb0891;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+sleep-menu #sricm div{
+    position: absolute;
+    width: 80%;
+    background-color: #4a3d3d;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+sleep-menu #sricm div ul{
+    padding-left: 0px;
+}
+
+sleep-menu #sricm div ul li{
+    display: block;
+    height: 30px;
+    /* background-color: burlywood; */
+    width: 100%;
+}
+
+.sleep_menu_button{
+    background: #31227b00;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: initial;
+    border-color: #21454a;
+    border-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-radius: 0px;
+}
+
+.sleep_menu_button:hover{
+    background: #3d20ce;
+}
+
+#sleep_menu_close_button{
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    background: #0000;
+    background-image: url('../images/close-light.png');
+    background-size: contain;
+    border-width: 0px;
+    transform: translate(-50%,-50%);
+}
+
+#sleep_menu_close_button:hover{
+    background: #d8d3ec;
+}

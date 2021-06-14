@@ -333,8 +333,13 @@ function setView(view) {
   switch (currentView) {
     case LAYOUT_MODE.select:
       // Clear the selection, if there is one
-      Array.forEach(thumbnails.querySelectorAll('.selected.thumbnailImage'),
-                    function(elt) { elt.classList.remove('selected'); });
+      //todo
+      Array.prototype.forEach.call(thumbnails.querySelectorAll('.selected.thumbnailImage'),(elt)=>{
+        elt.classList.remove('selected');
+      });
+      // Array.forEach(thumbnails.querySelectorAll('.selected.thumbnailImage'),
+      //               function(elt) { elt.classList.remove('selected'); });
+      
       // On large devices we need to display the new current file after deletion
       // But if we just deleted the last file then we don't do this
       if (!isPhone && currentFileIndex !== -1)

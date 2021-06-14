@@ -7,63 +7,66 @@
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
     <meta charset="utf-8">
-    <title>Tablet UI</title>
-    <link rel="stylesheet" href="css/shell.css" type="text/css" />
+    <title>System UX</title>
+    <link rel="stylesheet" href="css/System.css" type="text/css" />
+    <link rel="stylesheet" href="css/AppContain.css" type="text/css" />
+    <link rel="stylesheet" href="css/WindowManager.css" type="text/css" />
+    <link rel="stylesheet" href="css/SystemToolbar.css" type="text/css" />
+    <link rel="stylesheet" href="css/StatusBar.css" type="text/css" />
+    <link rel="stylesheet" href="css/HomeScreen.css" type="text/css" />
+    <link rel="stylesheet" href="css/Keyboard.css" type="text/css" />
+    <link rel="stylesheet" href="css/Notification.css" type="text/css" />
     <link rel="stylesheet" href="http://shared.localhost/css/scale.css" type="text/css" />
-    <link rel="stylesheet" href="http://shared.localhost/css/tile.css" type="text/css" />
+
+    <!-- customElements -->
+    <script type="text/javascript" src="js/customElements/WindowManager/App.js" defer></script>
+    <script type="text/javascript" src="js/customElements/WindowManager/WindowManager.js" defer></script>
+    <script type="text/javascript" src="js/customElements/StatusBar/StatusBar.js" defer></script>
+    <script type="text/javascript" src="js/customElements/SystemToolbar/SystemToolbar.js" defer></script>
+    <script type="text/javascript" src="js/customElements/Notification/VolumeBar.js" defer></script>
+    <script type="text/javascript" src="js/customElements/Notification/Toaster.js" defer></script>
+
+
     <script type="text/javascript" src="js/System.js"></script>
-    <script type="text/javascript" src="js/StatusBar.js"></script>
     <script type="text/javascript" src="js/HwButtons.js"></script>
     <script type="text/javascript" src="js/PowerManager.js"></script>
     <script type="text/javascript" src="js/BatteryManager.js"></script>
-    <script type="text/javascript" src="js/SystemToolbar.js"></script>
-    <script type="text/javascript" src="js/HomeScreen.js"></script>
-    <script type="text/javascript" src="js/WindowManager.js"></script>
+    <script type="text/javascript" src="js/HomeScreen.js" type="module"></script>
     <script type="text/javascript" src="js/SoundManager.js"></script>
-    <script type="text/javascript" src="js/BrowserWindow.js"></script>
     <script type="text/javascript" src="js/KeyboardManager.js"></script>
+    <script type="text/javascript" src="js/PowerMenu.js"></script>
+
+    <script type="text/javascript" src="http://shared.localhost/js/UrlHelper.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/md5.js"></script>
+
     <!-- api-deamon -->
     <script src="http://127.0.0.1/api/v1/shared/core.js"></script>
     <script src="http://127.0.0.1/api/v1/shared/session.js"></script>
-    
     <script src="http://127.0.0.1/api/v1/powermanager/service.js"></script>
     <script src="http://127.0.0.1/api/v1/time/service.js"></script>
     <script src="http://127.0.0.1/api/v1/audiovolumemanager/service.js"></script>
     <script src="http://127.0.0.1/api/v1/apps/service.js"></script>
-
+    <script src="http://127.0.0.1/api/v1/settings/service.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/system/PowerUtils.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/system/AudioVolumeUtils.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/system/AppmanagerUtils.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/system/SettingsUtils.js"></script>
 
-    <script type="text/javascript" src="http://shared.localhost/js/Places.js"></script>
-    <script type="text/javascript" src="http://shared.localhost/js/Site.js"></script>
-    <script type="text/javascript" src="http://shared.localhost/js/Tile.js"></script>
-    <script type="text/javascript" src="http://shared.localhost/js/UrlHelper.js"></script>
     
     <!-- embedding API provider -->
     <script src="chrome://b2g/content/embedding/web-embedder.js"></script>
     <script type="text/javascript" src="js/Embedding.js" type="module"></script>
 
-    <!-- elements -->
-    <script type="text/javascript" src="http://shared.localhost/elements/hos/system-manage/sub-app.js" defer></script>
 
   </head>
   <body id="system">
-    <menu type="toolbar" id="status-bar">
-      <span id="clock"></span>
-      <div id="battery" data-charging-status="false" data-battery-level="0">
-        <div id="battery-charging-indicator"></div>
-      </div>
-      <span id="battery-level">0%</span>
-      <span id="notification"></span>
-    </menu>
+    <system-status></system-status>
     <div id="home-screen">
-      <input id="search-bar" type="text" placeholder="Search or enter address"></input>
-      <!-- TODO:　use <web-view> -->
-      <ul id="top-sites-list"></ul>
+      <web-view mozpasspointerevents="true" transparent="true" src="http://home.localhost/index.html" style="height: inherit;"></web-view>
     </div>
     <div id="windows" class="hidden no-windows">
       <p id="no-windows-message">No open windows</p>
+      <window-manager id="windowmanager"></window-manager>
       <div id="browser-window-keyboard" class="browser-window">
         <web-view
                 class="offscreen"
@@ -75,11 +78,29 @@
         </web-view>
       </div>
     </div>
-    <menu type="toolbar" id="system-toolbar">
-      <button id="back-button"></button>
-      <button id="home-button"></button>
-      <button id="windows-button"></button>
-      <button id="new-window-button"></button>
-    </menu>
+    <software-buttons></software-buttons>
+
+    <!-- toaster -->
+    <toaster-bar id="toaster"></toaster-bar>
+
+    <!-- volume -->
+    <volume-bar></volume-bar>
+
+<!-- sleep-menu -->
+    <sleep-menu class="hidden">
+      <div id="sricm">
+          <div >
+            <center><h1>Power Menu</h1></center>
+            <ul id="menu">
+              <li>
+                <button class="sleep_menu_button">Airplane</button>
+                <button class="sleep_menu_button" id="menu_poweroff">Poweroff</button>
+                <button class="sleep_menu_button" id="menu_reboot">Reboot</button>
+              </li>
+            </ul>
+          </div>
+          <button id="sleep_menu_close_button"></button>
+        </div>
+  </sleep-menu>
   </body>
 </html>

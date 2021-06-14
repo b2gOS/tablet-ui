@@ -1,0 +1,63 @@
+{
+  "short_name": "",
+  "theme_color": "#a517ba",
+  "name": "Clock",
+  "description": "Gaia Clock",
+  "orientation": "default",
+  "lang": "en-US",
+  "start_url": "/index.html",
+  "icons": [
+    {
+      "src": "/style/icons/clock_84.png",
+      "type": "image/png",
+      "sizes": "84x84"
+    },
+    {
+      "src": "/style/icons/clock_126.png",
+      "type": "image/png",
+      "sizes": "126x126"
+    },
+    {
+      "src": "/style/icons/clock_142.png",
+      "type": "image/png",
+      "sizes": "142x142"
+    },
+    {
+      "src": "/style/icons/clock_189.png",
+      "type": "image/png",
+      "sizes": "189x189"
+    },
+    {
+      "src": "/style/icons/clock_284.png",
+      "type": "image/png",
+      "sizes": "284x284"
+    }
+  ],
+  "b2g_features": {
+    "version": "1.0",
+    "core": true,
+    "permissions": {
+      "power":{},
+      "battery":{},
+      "powersupply":{},
+      "input":{},
+      "ime-connect":{},
+      "worker-activity":{},
+      "system-time":{ "access": "readwrite" },
+      "wifi-manage":{},
+      "volumemanager":{},
+      "web-view": {},
+      "settings":{ "access": "readwrite" },
+      "device-storage:sdcard":{ "access": "readwrite" },
+      "audio-channel-content":{},
+      "webapps-manage":{}
+    },
+    "messages": [
+      "alarm",
+      "system-time-change"
+    ],
+    "serviceworker": {
+      "script_url": "sw.js"
+    }
+  }
+}

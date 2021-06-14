@@ -170,7 +170,11 @@ function editOptionsHandler() {
   // buttons have radio behavior
   var parent = this.parentNode;
   var buttons = parent.querySelectorAll('a.radio.button');
-  Array.forEach(buttons, function(b) { selectEditOption(b, false); });
+  //todo
+  Array.prototype.forEach.call(buttons,(b)=>{
+    selectEditOption(b, false);
+  });
+  // Array.forEach(buttons, function(b) { selectEditOption(b, false); });
   selectEditOption(this, true);
 
   // Set selected effect or cropMode elementId in editSettings object
@@ -348,7 +352,11 @@ var exposureSlider = (function() {
 function setEditTool(editTool) {
   // Hide all options
   var options = $('edit-options').querySelectorAll('div.edit-options-bar');
-  Array.forEach(options, function(o) { o.classList.add('hidden'); });
+  //todo
+  Array.prototype.forEach.call(options, (o)=>{
+    o.classList.add('hidden');
+  });
+  // Array.forEach(options, function(o) { o.classList.add('hidden'); });
 
   // Hide auto enhance message banner before entering
   // an edit tool or cancel of edit screens.
@@ -542,8 +550,12 @@ function hideEditToolView() {
 
 function undoCropHandler() {
   // Switch to free-form cropping
-  Array.forEach($('edit-crop-options').querySelectorAll('a.radio.button'),
-                function(b) { selectEditOption(b, false); });
+  //todo
+  Array.prototype.forEach.call($('edit-crop-options').querySelectorAll('a.radio.button'),(b)=>{
+    selectEditOption(b, false);
+  });
+  // Array.forEach($('edit-crop-options').querySelectorAll('a.radio.button'),
+  //               function(b) { selectEditOption(b, false); });
   selectEditOption($('edit-crop-aspect-free'), true);
   imageEditor.setCropAspectRatio(); // freeform
   // And revert to full-size image

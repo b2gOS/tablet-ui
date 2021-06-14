@@ -22,7 +22,7 @@ var UrlHelper = {
    * @returns {String} true or false
    */
   isLoaclApp:function(input){
-    return ((/\.localhost/i).test(input) && !((/newtab.localhost/i).test(input)));
+    return ((/\.localhost/i).test(input) && !((/browser.localhost/i).test(input)));
   },
 
   /**

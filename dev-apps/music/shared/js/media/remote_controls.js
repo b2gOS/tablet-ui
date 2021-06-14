@@ -137,9 +137,10 @@ MediaRemoteControls.prototype._setupBluetooth = function(callback) {
   var self = this;
 
   // AVRCP commands use system message.
-  navigator.mozSetMessageHandler(
-    'media-button', this._commandHandler.bind(this)
-  );
+  //todo
+  // navigator.mozSetMessageHandler(
+  //   'media-button', this._commandHandler.bind(this)
+  // );
 
   // The bluetooth adapter will be needed to send metadata and play status
   // when those information are changed.
@@ -212,28 +213,29 @@ MediaRemoteControls.prototype._setupIAC = function() {
 
   this._queuedMessages = [];
   // Set up Inter-App Communications
-  navigator.mozApps.getSelf().onsuccess = function() {
-    var app = this.result;
-    // If IAC doesn't exist, just bail out.
-    if (!app.connect) {
-      this._queuedMessages = null;
-      return;
-    }
+  //todo
+  // navigator.mozApps.getSelf().onsuccess = function() {
+  //   var app = this.result;
+  //   // If IAC doesn't exist, just bail out.
+  //   if (!app.connect) {
+  //     this._queuedMessages = null;
+  //     return;
+  //   }
 
-    app.connect('mediacomms').then(function(ports) {
-      self._ports = ports;
-      self._ports.forEach(function(port) {
-        port.onmessage = function(event) {
-          self._commandHandler(event.data.command);
-        };
+  //   app.connect('mediacomms').then(function(ports) {
+  //     self._ports = ports;
+  //     self._ports.forEach(function(port) {
+  //       port.onmessage = function(event) {
+  //         self._commandHandler(event.data.command);
+  //       };
 
-        self._queuedMessages.forEach(function(message) {
-          port.postMessage(message);
-        });
-      });
-      self._queuedMessages = null;
-    });
-  };
+  //       self._queuedMessages.forEach(function(message) {
+  //         port.postMessage(message);
+  //       });
+  //     });
+  //     self._queuedMessages = null;
+  //   });
+  // };
 };
 
 // Synchronous connection-oriented(SCO) link is the type of radio link used

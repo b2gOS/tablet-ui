@@ -1,0 +1,61 @@
+/* System Toolbar */
+#system-toolbar {
+    height: 3.2rem;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  body.windows-active #system-toolbar {
+    background-color: #000;
+  }
+  
+  #system-toolbar button {
+    height: 1.6rem;
+    width: 5.6rem;
+    background: none;
+    border: none;
+    background-size: auto 1.6rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0.8rem 5rem;
+    box-sizing: content-box;
+    border-radius: 0;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  
+  #system-toolbar button:active {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  #system-toolbar #back-button {
+    background-image: url('../images/back-light.png');
+  }
+  
+  #system-toolbar #home-button {
+    background-image: url('../images/home-light.png');
+  }
+  
+  #system-toolbar #windows-button {
+    background-image: url('../images/windows-light.png');
+  }
+  
+  #system-toolbar #new-window-button {
+    display: none;
+    background-image: url('../images/new-window-light.png');
+  }
+  
+  body.task-manager-active #system-toolbar #back-button {
+    display: none;
+  }
+  
+  body.task-manager-active #system-toolbar #windows-button {
+    display: none;
+  }
+
+  /* body.task-manager-active #system-toolbar #new-window-button {
+    display: inline;
+  } */
+  

@@ -1,0 +1,857 @@
+html {
+    height: 100%;
+    font-size: 10px;
+}
+body, div, p, ul, li, input, textarea, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #fff;
+}
+progress.pack-activity {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+section[role="region"] header h2 {
+    padding: 0;
+    border-bottom: none;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+section[role="region"] > header:first-child h2 {
+    font-size: 2.5rem;
+    line-height: 4.8rem;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0px 0px 0px 3rem;
+    padding-right: 1rem;
+    height: 100%;
+    font-weight: normal;
+}
+
+section[role="region"] > header:first-child input[type="text"] {
+    position: absolute;
+    top: 0;
+    left: 2.9rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 4.8rem;
+    width: calc(100% - 8.3rem);
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+    padding: 0;
+}
+section[role="region"]#note > header:first-child input[type="text"] {
+    padding: 0 8.6rem 0 3rem;
+}
+section[role="region"].edit-title > header:first-child h1 {
+    display: none;
+}
+section[role="region"].edit-title > header:first-child input[type="text"] {
+    display: block;
+    z-index: 50;
+}
+section[role="region"] > header:first-child menu[type="toolbar"] {
+    position: relative;
+    z-index: 100;
+}
+
+.card .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    line-height: 4rem;
+    z-index: 7;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, .8);
+}
+    .card .footer b {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4rem;
+        font-size: 0;
+        text-indent: -10rem;
+        cursor: pointer;
+    }
+    .card .footer .bottomleft {
+        left: 0.5rem;
+    }
+    .card .footer .bottomright {
+        right: 1rem;
+    }
+    .card .footer select {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 5rem;
+        height: 4rem;
+        opacity: 0;
+    }
+
+.card > .content {
+    position: absolute;
+    top: 4.9rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 4rem;
+    z-index: 5;
+    overflow-y: auto;
+}
+
+.notebook-notes {
+    list-style-type: none;
+    min-height: 100%;
+    padding-bottom: 4rem;
+}
+    .notebook-notes li {
+        position: relative;
+        font-size: 1.3rem;
+        min-height: 2.1rem;
+        overflow: hidden;
+        padding: 1.2rem 4rem 1.2rem 2rem;
+        border-bottom: 0.1rem solid #dbd9d9;
+        cursor: pointer;
+    }
+        .notebook-notes li .title {
+            float: left;
+            font-size: 1.6rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .notebook-notes li .text {
+            clear: left;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #444;
+        }
+        .notebook-notes li .time {
+            float: right;
+            margin-left: 0.3rem;
+            font-style: italic;
+            font-size: 1.1rem;
+            vertical-align: bottom;
+            color: #666;
+        }
+        .notebook-notes li .image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 3rem;
+            background-size: cover;
+            background-position: 0 50%;
+            background-repeat: no-repeat;
+        }
+        .notebook-notes li b {
+            font-weight: bold;
+        }
+
+#note {
+
+}
+#note.card > .content {
+    top: 8.5rem;
+}
+#note.card > .footer {
+    display: none;
+}
+    #note #note-content, #note .demo-content {
+        background: transparent;
+        border: none;
+        width: 100%;
+        min-height: 25rem;
+        padding: 2rem;
+        line-height: 130%;
+        font-size: 1.6rem;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #note .demo-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+    }
+    #note.show-empty #note-content {
+    }
+    #note.has-images #note-content {
+    }
+    #note #note-resources {
+        list-style-type: none;
+        color: #2c2c2c;
+        font-size: 1.3rem;
+        margin: 0 1.5rem 1.5rem 1.5rem;
+    }
+        #note #note-resources li {
+            position: relative;
+            margin-top: 1.5rem;
+        }
+
+        #note #note-resources .image {
+            height: 6rem;
+            padding-left: 9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+            #note #note-resources .image:before {
+                content: "";
+                background: transparent url('../images/attachment.png') no-repeat;
+                background-size: 0.9rem 2.1rem;
+                position: absolute;
+                top: 0;
+                left: 7rem;
+                width: 0.9rem;
+                height: 2.1rem;
+            }
+            #note #note-resources .image span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 6rem;
+                height: 6rem;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+    #note #button-note-save {
+        opacity: 0;
+        pointer-events: none;
+        -moz-transition: opacity 150ms linear;
+        transition: opacity 150ms linear;
+    }
+    #note #button-note-save.visible {
+        opacity: 1;
+        pointer-events: inherit;
+    }
+
+#note.card.readonly-trashed > .content {
+    top: 4.9rem;
+}
+    #note.readonly-trashed #note-edit-actions {
+        display: none;
+    }
+    #note.readonly-trashed #button-note-save {
+        display: none;
+    }
+    #note.readonly-trashed #note-content {
+        pointer-events: none;
+    }
+    #note.readonly-trashed > .footer {
+        display: block;
+    }
+
+#note.card.readonly > .content {
+    top: 4.9rem;
+}
+    #note.readonly #note-edit-actions {
+        display: none;
+    }
+    #note.readonly #button-note-save {
+        display: none;
+    }
+    #note.readonly #note-content {
+        pointer-events: none;
+    }
+
+#warning {
+    display: none;
+    position: absolute;
+    top: 6rem;
+    left: 1rem;
+    color: #a0a0a0;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#note-edit-actions {
+    position: absolute;
+    top: 4.9rem;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    background: #c9c7c7;
+    border-bottom: 0.1rem solid #c9c7c7;
+}
+    #note-edit-actions:after {
+        display: list-item;
+        float: none;
+        clear: both;
+        height: 0;
+        width: 0;
+    }
+    #note-edit-actions li {
+        position: relative;
+        float: left;
+        width: 20%;
+        height: 3.6rem;
+        line-height: 3.6rem;
+        font-size: 0;
+        text-indent: -10rem;
+        cursor: pointer;
+        border-right: 0.1rem solid #a6a5a5;
+        border-left: 0.1rem solid #d9d8d8;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #note-edit-actions li:first-child {
+        background: #fff;
+        border-left: none;
+    }
+    #note-edit-actions li:last-child {
+        border-right: none;
+    }
+
+
+#image-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 600;
+    display: none;
+}
+#image-fullscreen.visible {
+    display: block;
+}
+    #image-fullscreen .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #image-fullscreen .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4rem;
+        line-height: 4rem;
+        padding: 0 5rem;
+        z-index: 50;
+        background: rgba(0, 0, 0, .8);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+.empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: none;
+}
+    .empty p {
+        position: absolute;
+        top: 50%;
+        left: 2.4rem;
+        right: 2.4rem;
+        color: #606060;
+        font-size: 2.1rem;
+        line-height: 130%;
+        padding-top: 0.5rem;
+        margin-top: -2.5rem;
+        border-top: 0.1rem solid rgba(0, 0, 0, .5);
+    }
+#main.show-empty .empty, #note.show-empty:not(.has-images):not(.readonly) .empty {
+    display: block;
+}
+
+#notebooks {
+    background: #3b3b3b url(../shared/style_unstable/drawer/images/ui/pattern.png);
+    color: #fff;
+    box-shadow: -0.5rem 0 0.5rem 0 rgba(0, 0, 0, .3) inset;
+}
+    #notebooks h2 {
+        position: relative;
+        height: 4.7rem;
+        line-height: 4.7rem;
+        font-size: 2.2rem;
+        padding: 0 2rem;
+        border-bottom: 0.1rem solid rgba(255, 255, 255, .1);
+        box-shadow: 0 0.1rem 0.2rem 0 rgba(0, 0, 0, .3);
+    }
+        #notebooks h2 #button-new-notebook {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 5rem;
+            cursor: pointer;
+            background: transparent url(../images/iconaction_new.png) 50% 50% no-repeat;
+            background-size: 2.1rem 2rem;
+        }
+    #notebooks .card-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 5rem;
+        right: -5rem;
+        cursor: pointer;
+    }
+    #notebooks-list {
+        bottom: 4rem;
+        list-style-type: none;
+        overflow-y: scroll;
+        position: absolute;
+        top: 4.8rem;
+        width: 100%;
+    }
+        #notebooks-list li {
+            border-bottom: 0.1rem solid #616666;
+            padding: 1.3rem 2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        #notebooks-list li:last-child {
+            border-bottom: 0;
+        }
+
+#search {
+    position: relative;
+    padding: 0.5rem 2rem;
+    background: #e4e4e4;
+    background: -moz-linear-gradient(50% 0, #f8f8f8, #dbd9d9);
+}
+    #search input {
+        height: 2.5rem;
+        width: 100%;
+        padding: 0 2.4rem 0 0.4rem;
+        background: #fff;
+        border: 0.1rem solid #b0b0b0;
+        border-radius: 0.3rem;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+
+#note-info {
+    background: #e1e1e5;
+}
+    #note-info > .content {
+        background: -moz-linear-gradient(50% 0, #efeff1, #e1e1e5);
+    }
+    #note-info .fields {
+        list-style-type: none;
+        font-size: 1.5rem;
+    }
+        #note-info .fields li {
+            position: relative;
+            height: 4.2rem;
+            /*line-height: 4.2rem;*/
+            padding: 0 3rem 0 13.1rem;
+            text-align: right;
+            border-bottom: 0.1rem solid #e3e3e4;
+        }
+            #note-info .fields li label {
+                position: absolute;
+                top: 0;
+                left: 3rem;
+                bottom: 0;
+                display: inline-block;
+                text-align: left;
+                width: 10rem;
+            }
+                #note-info .fields li label:before {
+                    content: "";
+                    position: absolute;
+                    top: 0.5rem;
+                    bottom: 0.5rem;
+                    right: -0.1rem;
+                    width: 0.1rem;
+                    background: #c4c4c5;
+                }
+                #note-info .fields li label:after {
+                    content: "";
+                    position: absolute;
+                    top: 0.5rem;
+                    bottom: 0.5rem;
+                    right: -0.2rem;
+                    width: 0.1rem;
+                    background: #fdfdfd;
+                }
+
+            #note-info .fields li .value {
+                position: relative;
+            }
+            #note-info .fields li select {
+                font-size: 1.5rem;
+                font-weight: bold;
+                background: transparent;
+                border-width: 0;
+            }
+
+
+.search-results #main header,
+.search-results #main .footer,
+.search-results #main .empty {
+    display: none;
+}
+.search-results #main .content {
+    top: 0;
+}
+.search-results .trashed {
+    opacity: .6;
+}
+
+
+.notifier {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    font-size: 1.4rem;
+    padding: 0 2rem;
+    color: #fff;
+    font-weight: 400;
+    background: #565d65;
+    z-index: 400;
+    pointer-events: none;
+    opacity: 0;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.notifier.visible {
+    opacity: 1;
+    -moz-transform: translate3d(0, -4rem, 0);
+    transform: translate3d(0, -4rem, 0);
+}
+
+
+.sprited:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: -1.2rem 0 0 -1.2rem;
+    pointer-events: none;
+}
+#button-notebook-search:before {
+    background: transparent url('../images/search_big.png') 0 0 no-repeat;
+    background-size: 2.4rem 2.4rem;
+}
+#button-notebook-sortby:before {
+    background: transparent url('../images/sortby.png') 0 0 no-repeat;
+    background-size: 1.8rem 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: -0.85rem 0 0 -0.9rem;
+}
+#button-manual-sync {
+    width: 2.8rem;
+    left: 14.6rem;
+}
+body:not(.loggedin) #button-manual-sync {
+    display: none;
+}
+#button-manual-sync:before {
+    background: url('../images/sync.png') 0 0 no-repeat;
+    background-size: 2.8rem 2.2rem;
+    width: 2.8rem;
+    height: 2.2rem;
+}
+body.syncing #button-manual-sync:before {
+    animation: 0.9s steps(30, end) 0s normal none infinite rotate;
+}
+body.offline #button-manual-sync {
+    opacity: 0.4;
+}
+#search:before {
+    background: transparent url('../images/search_small.png') 0 0 no-repeat;
+    background-size: 1.6rem 1.6rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: -0.85rem 0 0 0;
+    left: auto;
+    right: 2.3rem;
+}
+.empty:before {
+    background: transparent url('../images/empty_list.png') 0 0 no-repeat;
+    background-size: 15.1rem 18.3rem;
+    width: 16rem;
+    height: 18.3rem;
+    margin: -9.2rem 0 0 -8rem;
+}
+.notebook-fake .empty:before {
+    background: transparent url('../images/empty_trash.png') 0 0 no-repeat;
+    background-size: 15.9rem 18.2rem;
+    width: 16rem;
+    height: 18.3rem;
+}
+
+#note-edit-actions .type:before {
+    background: transparent url('../images/type.png') 0 0 no-repeat;
+    background-size: 2rem 2.1rem;
+    width: 2rem;
+    height: 2.1rem;
+    margin: -0.8rem 0 0 -1rem;
+}
+#note-edit-actions .photo:before {
+    background: transparent url('../images/photo.png') 0 0 no-repeat;
+    background-size: 2.9rem 2.3rem;
+    width: 2.9rem;
+    height: 2.3rem;
+    margin: -1rem 0 0 -1.3rem;
+}
+#note-edit-actions .info:before {
+    background: transparent url('../images/info.png') 0 0 no-repeat;
+    background-size: 2.5rem 2.4rem;
+    width: 2.5rem;
+    height: 2.4rem;
+    margin: -1rem 0 0 -1.1rem;
+}
+#note-edit-actions .share:before {
+    background: transparent url('../images/share.png') 0 0 no-repeat;
+    background-size: 2.3rem 2.3rem;
+    width: 2.3rem;
+    height: 2.4rem;
+    margin: -1rem 0 0 -1.2rem;
+}
+#note-edit-actions .delete:before {
+    background: transparent url('../images/delete.png') 0 0 no-repeat;
+    background-size: 2.4rem 2.5rem;
+    width: 2.4rem;
+    height: 2.6rem;
+    margin: -1.1rem 0 0 -1.2rem;
+}
+
+#button-note-restore:before {
+    background: transparent url('../images/restore.png') 0 0 no-repeat;
+    background-size: 2.8rem 2.6rem;
+    width: 2.8rem;
+    height: 2.6rem;
+    margin: -1.1rem 0 0 -1.4rem;
+}
+#button-note-delete:before {
+    background: transparent url('../images/expunge.png') 0 0 no-repeat;
+    background-size: 2.4rem 2.5rem;
+    width: 2.4rem;
+    height: 2.6rem;
+    margin: -1.1rem 0 0 -1.2rem;
+}
+
+#button-resource-close:before {
+    background: transparent url('../images/close.png') 0 0 no-repeat;
+    background-size: 1.7rem 1.7rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: -0.85rem 0 0 -0.9rem;
+}
+#button-resource-delete:before {
+    background: transparent url('../images/delete.png') 0 0 no-repeat;
+    background-size: 2.4rem 2.5rem;
+    width: 2.4rem;
+    height: 2.6rem;
+    margin: -1.1rem 0 0 -1.2rem;
+}
+
+.loggedin section[role="region"] > header:first-child {
+    background-image: url(../images/header_bg_green.png);
+}
+.loggedin section[role="region"] > header:first-child > button .icon:after, .loggedin section[role="region"] > header:first-child > a .icon:after {
+    background-color: #498722;
+}
+
+.loggedin section[role="region"] > header:first-child .icon-close {
+  background-image: url(/shared/style/headers/images/icons/close.png);
+}
+
+.loggedin section[role="region"] > header:first-child h1 {
+  color: #fff;
+}
+
+#settings .buttons:not(.premium) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#settings .buttons:not(.premium) button{
+    width: 14rem;
+    margin: 0 0.5rem;
+}
+#settings .buttons.premium #button-premium{
+    display: none;
+}
+.drawer footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    padding: 0;
+    background: rgba(0,0,0,.3);
+}
+.drawer footer #button-evernote-login {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+.drawer footer #button-evernote-login div {
+    background-color: #6BB130;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.21), rgba(255, 255, 255, 0.21));
+    border-radius: 0.1rem 0.1rem 0.1rem 0.1rem;
+    box-shadow: 0 -0.1rem rgba(0, 0, 0, 0.4) inset;
+    display: block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin: 0.3rem auto 0;
+    padding: 0;
+    text-overflow: clip;
+    white-space: normal;
+    width: 25rem;
+}
+.drawer footer #button-evernote-login span {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-shadow: 0 -0.1rem rgba(0, 0, 0, 0.3);
+}
+.loggedin .drawer footer #button-evernote-login {
+    display: none;
+}
+.drawer footer #button-evernote-login i {
+    background: url("../images/evernote-logo.png") no-repeat scroll left top transparent;
+    background-size: 9.3rem 2.1rem;
+    display: inline-block;
+    width: 1.7rem;
+    vertical-align: middle;
+    height: 2.1rem;
+}
+.drawer footer #button-evernote-login i#evernote-text {
+    background-position: right top;
+    width: 7.2rem;
+}
+.drawer footer #button-settings {
+    background: url("../images/settings.png") no-repeat;
+    background-size: 2.4rem 2.4rem;
+    border: 0;
+    border-radius: 0;
+    float: right;
+    height: 2.4rem;
+    margin: 1rem 1.6rem 1rem 0;
+    overflow: hidden;
+    padding: 0;
+    text-indent: -9000em;
+    width: 2.4rem;
+}
+.drawer footer span.username {
+    float: left;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    padding: 1rem 0 1rem 1.6rem;
+}
+.drawer footer progress {
+    float: left;
+    margin: 1rem 0 1rem 1.6rem;
+    position: relative;
+    top: -0.4rem;
+    margin-right: 1.6rem;
+}
+body:not(.loggedin) .drawer footer span.username, body:not(.loggedin) .drawer footer #button-settings {
+    display: none;
+}
+body:not(.syncing) progress[role="sync"] {
+    display: none;
+}
+body:not(.loading) progress[role="loading"] {
+    display: none;
+}
+progress[role="loading"] {
+    display: block;
+    margin: 50% auto 0;
+}
+
+*[data-type=list] li {
+    min-height: 4.3rem;
+    border-bottom: 0.1rem solid #E6E6E3;
+    position: relative;
+}
+*[data-type=list] li:last-child {
+    border-bottom: 0;
+}
+*[data-type=list] p {
+    line-height: 2.3rem;
+    font-size: 1.6rem;
+    padding: 1rem 3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+*[data-type=list] p em {
+    line-height: 2.3rem;
+    position: absolute;
+    right: 3rem;
+    text-indent: 1.5rem;
+    width: 5.9rem;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+}
+*[data-type=list] p em:after {
+    background: url(../images/div_line_lg_gray.png) left top no-repeat;
+    background-size: 0.2rem 3.6rem;
+    position: absolute;
+    left: 0;
+    top: -0.7rem;
+    width: 0.2rem;
+    height: 3.6rem;
+    content: "";
+}
+
+body.loading .card:not(.active) {
+    display: none;
+}
+
+#note-content img {
+    max-width:100%;
+    height: auto;
+}

@@ -1,0 +1,23 @@
+/* Virtual keyboard */
+
+#browser-window-keyboard {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+#keyboard {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  pointer-events: none;
+}
+
+#keyboard.offscreen {
+  transform: translateY(100%);
+  display: none;
+}

@@ -5,11 +5,11 @@
 var HwButtons = {
 
   powerTimer: null,
+  powerMenu: null,
 
   handleEvent: function(evt) {
     console.debug('!!! evt', evt, evt.type, evt.key, "prevented?", evt.defaultPrevented);
     var key = evt.key.toLowerCase();
-
     switch (key) {
       case 'power': {
         switch (evt.type) {
@@ -17,6 +17,12 @@ var HwButtons = {
           case 'mozbrowserafterkeydown':
           case 'mozbrowserbeforekeydown':
             this.powerTimer = new Date().getTime();
+            this.timer = window.setTimeout(() =>
+            {
+              console.debug('Issuing shutdown sequence');
+              this.powerMenu = document.querySelector('sleep-menu')
+              this.powerMenu.classList.remove('hidden')
+            },2000)
             break;
 
           case 'keyup':
@@ -26,13 +32,8 @@ var HwButtons = {
             console.debug('delta', delta);
 
             // Pressing Power for more than 1500ms should power off device
-            if (delta > 1500) {
-              console.debug('Long pressing power, shutting down!');
-              setTimeout(() => {
-                console.debug('Issuing shutdown sequence');
-                PowerManager.powerOff();
-              }, 500);
-            } else {
+            if (delta < 1500) {
+              window.clearTimeout(this.timer)
               console.debug('Short pressing power, toggling screen');
               setTimeout(() => {
                 console.debug('Issuing screen toggle');
@@ -64,11 +65,9 @@ var HwButtons = {
   start: function() {
     console.debug('Starting HwButtons ...');
     window.addEventListener('keyup', this);
-    // window.addEventListener('mozbrowserbeforekeyup', this);
     window.addEventListener('mozbrowserafterkeyup', this);
     window.addEventListener('keydown', this);
     window.addEventListener('mozbrowserbeforekeydown', this);
-    // window.addEventListener('mozbrowserafterkeydown', this);
     return this;
   },
 

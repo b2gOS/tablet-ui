@@ -10,22 +10,16 @@ var System = {
    * Start System.
    */
   start: function() {
-    this.windowManager = WindowManager.start();
     this.soundManager = SoundManager.start();
-    this.statusBar = StatusBar.start();
-    this.systemToolbar = SystemToolbar.start();
     this.homeScreen = HomeScreen.start();
     this.powerManager = PowerManager.start();
     this.batteryManager = BatteryManager.start();
     this.hwButtons = HwButtons.start();
     this.keyboardManager = KeyboardManager.start();
+    this.PowerMenu = PowerMenu.start();
     window.focus()
 
-    Places.start().then(function() {
-      console.log('Started the Places database');
-    }, function(error) {
-      console.error('Failed to start Places database ' + error);
-    });
+
   }
 
 };

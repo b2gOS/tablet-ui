@@ -13,7 +13,7 @@
     "type": "image/png"
   }],
   "orientation": "natural",
-  "start_url": "/home.html",
+  "start_url": "/index.html",
   "theme_color": "#a517ba",
   "b2g_features": {
     "version": "1.0",
@@ -33,6 +33,7 @@
       "storage":{ "access": "readwrite" },
       "settings":{ "access": "readwrite" },
       "device-storage:sdcard":{ "access": "readwrite" },
+      "device-storage:app":{ "access": "readwrite" },
       "audio-channel-content":{},
       "webapps-manage":{}
     }

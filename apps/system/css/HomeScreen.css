@@ -1,0 +1,41 @@
+/* Home Screen */
+#home-screen {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: center;
+    height: 100%;
+  }
+  
+  #home-screen.hidden {
+    display: none;
+  }
+  
+  /* #home-screen #search-bar {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    height: 3.3rem;
+    font-size: 1.1rem;
+    border: none;
+    text-align: center;
+    margin: 2rem;
+    width: calc(100% - 4rem);
+    border-radius: 0;
+    box-sizing: border-box;
+    padding: 0;
+  }  */
+  
+  /* #home-screen-frame {
+    flex: 1;
+    border: none;
+  } */
+  
+  /* 
+  #home-screen #top-sites-list {
+    list-style-type: none;
+    margin: 0;
+    height: 86%;
+    overflow-y: auto;
+    scrollbar-width: none;
+  } */
+  

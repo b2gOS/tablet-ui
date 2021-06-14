@@ -7,7 +7,10 @@ pref('dom.payment.provider.0.type', "mozilla/payments/pay/v1");
 pref('dom.payment.provider.0.requestMethod', "GET");
 pref('b2g.system_manifest_url', "chrome://b2g/content/system/manifest.webmanifest");
 pref("b2g.neterror.url", "chrome://system/content/net_error.html");
+// system app url for b2g wpt tests
+// pref("b2g.system_startup_url", "chrome://system/content/net_error.html");
 pref("b2g.system_startup_url", "chrome://system/content/index.html");
+// pref("b2g.system_startup_url", "chrome://b2g/content/system/index.html");
 pref('network.http.max-connections-per-server', 15);
 pref('dom.mozInputMethod.enabled', true);
 pref('layout.css.scroll-behavior.enabled', true);

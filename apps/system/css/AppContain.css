@@ -1,0 +1,16 @@
+app-contain[islocalapp="true"] .browser-chrome {
+    display: none;
+  }
+  
+body.task-manager-active app-contain .browser-chrome{
+    display: flex;
+  }
+body.task-manager-active app-contain .browser-chrome form{
+    display: none;
+  }
+
+/* resize app-contain ui height when kayboard is active */
+app-contain web-view{
+    height: inherit;
+}
+  

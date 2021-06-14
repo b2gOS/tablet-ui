@@ -3,15 +3,6 @@
   "name": "system",
   "short_name": "",
   "description": "",
-  "icons": [{
-    "src": "/images/home-light.png",
-    "sizes": "56x56",
-    "type": "image/png"
-  },{
-    "src": "/images/home-light.png",
-    "sizes": "112x112",
-    "type": "image/png"
-  }],
   "orientation": "natural",
   "start_url": "/index.html",
   "theme_color": "#a517ba",
@@ -25,12 +16,10 @@
       "input":{},
       "ime-connect":{},
       "worker-activity":{},
-      "time-service":{},
       "system-time":{ "access": "readwrite" },
       "wifi-manage":{},
       "volumemanager":{},
       "web-view": {},
-      "storage":{ "access": "readwrite" },
       "settings":{ "access": "readwrite" },
       "device-storage:sdcard":{ "access": "readwrite" },
       "audio-channel-content":{},

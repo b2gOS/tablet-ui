@@ -15,6 +15,7 @@
 
     <script type="text/javascript" src="http://shared.localhost/js/system/AppmanagerUtils.js"></script>
     <script type="text/javascript" src="http://shared.localhost/js/system/PowerUtils.js"></script>
+    <script type="text/javascript" src="http://shared.localhost/js/system/SettingsUtils.js"></script>
 
     <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="http://shared.localhost/elements/b2g-button/b2g-button.js" defer></script>
     <link rel="stylesheet" href="css/app.css" type="text/css" />
     <link rel="stylesheet" href="css/ui.css" type="text/css" />
+
     <title>ui</title>
   </head>
   <body>
@@ -50,7 +52,13 @@
       <p>Display :</p>
       <input type="range" id="display-light" name="light" min="0" max="100" value="100" onporpertychange="">
       <label for="volume">Light</label>
+    </section>
+
+    <section>
+      <p>settings List :</p>
+      <div id="settings">Loading...</div>
       </section>
+    <section>
 
     <!-- <b2g-button button-text="button-text" button-id="button-id"></b2g-button> -->
   </body>

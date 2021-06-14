@@ -62,13 +62,14 @@ var App = (function() {
     // If the URL contains '#pick', we will handle the pick activity
     // or just start the Music app from Mix page
     if (document.URL.indexOf('#pick') !== -1) {
-      navigator.mozSetMessageHandler('activity', function activityHandler(a) {
-        var activityName = a.source.name;
+      //todo
+      // navigator.mozSetMessageHandler('activity', function activityHandler(a) {
+      //   var activityName = a.source.name;
 
-        if (activityName === 'pick') {
-          app.pendingPick = a;
-        }
-      });
+      //   if (activityName === 'pick') {
+      //     app.pendingPick = a;
+      //   }
+      // });
 
       TabBar.option = 'title';
       ModeManager.start(MODE_PICKER);
@@ -107,13 +108,21 @@ var App = (function() {
     function setVisibility(visible) {
       // hide or show the overlay container and toggle aria-hidden on all other
       // children of <body>
-      Array.forEach(document.body.children, function(elt) {
+      //todo
+      Array.prototype.forEach.call(document.body.children,(elt)=>{
         if (elt.id === 'overlay') {
           elt.classList.toggle('hidden', !visible);
         } else {
           elt.setAttribute('aria-hidden', visible);
         }
       });
+      // Array.forEach(document.body.children, function(elt) {
+      //   if (elt.id === 'overlay') {
+      //     elt.classList.toggle('hidden', !visible);
+      //   } else {
+      //     elt.setAttribute('aria-hidden', visible);
+      //   }
+      // });
     }
 
     if (id === null) {

@@ -743,6 +743,8 @@ var favoritesList = {
 function init() {
   frequencyDialer.init();
 
+  settingsService = new SettingsServiceManager();
+
   var seeking = false;
   function onclick_seekbutton(event) {
     var seekButton = this;
@@ -864,7 +866,7 @@ function init() {
     // Designates that the app is *completely* loaded and all relevant
     // "below-the-fold" content exists in the DOM, is marked visible,
     // has its events bound and is ready for user interaction. All
-    // required startup background processing should be complete.
+    // required startup background processing should be complete
     window.performance.mark('fullyLoaded');
     window.dispatchEvent(new CustomEvent('moz-app-loaded'));
   });
@@ -882,6 +884,12 @@ function init() {
   // fix a last-minute release blocker.
   //
   // todo
+
+  settingsService.addObserver('private.broadcast.attention_screen_opening', 
+  (state, result) => {
+    console.log('##############Observer callback, result:', result ,state);
+  }
+  );
   // navigator.mozSettings.addObserver(
   //   'private.broadcast.attention_screen_opening',
   //   function(event) {

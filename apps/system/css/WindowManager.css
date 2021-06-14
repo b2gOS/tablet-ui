@@ -1,0 +1,184 @@
+/* Window Manager */
+#windows {
+    flex: 1;
+    background-color: #000;
+    color: #fff;
+  }
+  
+#windows.no-windows {
+    justify-content: center;
+}
+  
+#windows p {
+    text-align: center;
+    font-size: 1.6rem;
+    display: none;
+}
+  
+body.task-manager-active #windows.no-windows p {
+    display: block;
+}
+  
+body.task-manager-active #windows {
+    display: inline;
+    flex-direction: column;
+    transform: scaleX(0.9) scaleY(0.9);
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+/* Browser Window */
+.browser-window {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+body.task-manager-active .browser-window {
+  flex: 1;
+  /* display: inline-block; */
+  margin-top: 1rem;
+}
+
+.browser-window.hidden {
+  display: none;
+}
+
+.browser-window app-contain {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background-color: #fff;
+}
+
+
+.browser-window .window-scrim {
+    display: none;
+  }
+  
+body.task-manager-active .window-scrim {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: transparent; */
+    z-index: 1;
+    background-color: #25ac47a6;
+    margin-top: -151%;
+  }
+  
+body.task-manager-active window-manager{
+    overflow: auto;
+    /* display: grid; */
+    height: 100%;
+}
+
+.window-scrim p{
+  margin-top: 50%;
+}
+
+
+/* Browser Chrome */
+.browser-chrome{
+    display: flex;
+    flex-direction: row;
+    height: 4.2rem;
+    margin: 0;
+    padding: 0 0 0 0.8rem;
+    box-sizing: border-box;
+}
+  
+  
+body.task-manager-active .browser-chrome {
+    background-color: #333;
+    padding: 0.5rem 0 0 0.8rem;
+}
+  
+  
+body.task-manager-active .browser-chrome input {
+    background-color: transparent;
+}
+  
+  .browser-chrome form {
+    flex: 1;
+    height: 3.2rem;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .browser-chrome input {
+    width: 100%;
+    height: 3.2rem;
+    font-size: 1.2rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #999;
+    text-align: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+  
+  .browser-chrome input.loading {
+    background-image: url(../images/loading.gif);
+    background-position: 0.3rem center;
+    background-repeat: no-repeat;
+    background-size: 2.4rem;
+  }
+  
+  .browser-chrome input:focus {
+    color: #fff;
+    text-align: left;
+  }
+  
+  .browser-chrome input:focus.loading {
+    background-image: none;
+  }
+  
+  .browser-chrome input:invalid {
+    box-shadow: none;
+  }
+  
+  .browser-chrome button {
+    height: 3.2rem;
+    width: 4.2rem;
+    background: none;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 3.2rem;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  .browser-chrome button.menu-button {
+      background-image: url('../images/menu-light.png');
+  }
+  
+  .browser-chrome button.close-button {
+      background-image: url('../images/close-light.png');
+      display: none;
+  }
+  
+  .browser-chrome button.close-button:active {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  body.task-manager-active #windows button.close-button {
+    z-index: 2;
+  }
+  
+  body.task-manager-active .browser-chrome button.menu-button {
+    display: none;
+  }
+  
+  body.task-manager-active .browser-chrome button.close-button {
+    display: block;
+  }
+

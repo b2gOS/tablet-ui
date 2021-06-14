@@ -4,11 +4,11 @@
     "short_name": "",
     "description": "",
     "icons": [{
-      "src": "/style/icons/camera_84.png",
+      "src": "/style/icons/music_84.png",
       "sizes": "56x56",
       "type": "image/png"
     },{
-      "src": "/style/icons/camera_84.png",
+      "src": "/style/icons/music_126.png",
       "sizes": "112x112",
       "type": "image/png"
     }],

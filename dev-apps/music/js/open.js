@@ -3,7 +3,8 @@
 'use strict';
 
 navigator.mozL10n.once(function onLocalizationInit() {
-  navigator.mozSetMessageHandler('activity', handleOpenActivity);
+  //todo
+  // navigator.mozSetMessageHandler('activity', handleOpenActivity);
 });
 
 function handleOpenActivity(request) {

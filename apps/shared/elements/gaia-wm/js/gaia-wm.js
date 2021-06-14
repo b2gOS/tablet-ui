@@ -12,38 +12,38 @@ class WindowManager extends HTMLElement {
       // Hooks up webview state to the UI.
       // FIXME: Do something fancy instead??
       
-      // this.ui_updater = state => {
-      //   console.log(`Updating UI state with: ${JSON.stringify(state)}`);
-      //   document.getElementById("statusbar").update_state(state);
+      this.ui_updater = state => {
+        console.log(`Updating UI state with: ${JSON.stringify(state)}`);
+        document.getElementById("statusbar").update_state(state);
   
-      //   if (state.canGoBack) {
-      //     document.getElementById("action-go-back").removeAttribute("disabled");
-      //   } else {
-      //     document
-      //       .getElementById("action-go-back")
-      //       .setAttribute("disabled", "true");
-      //   }
+        if (state.canGoBack) {
+          document.getElementById("action-go-back").removeAttribute("disabled");
+        } else {
+          document
+            .getElementById("action-go-back")
+            .setAttribute("disabled", "true");
+        }
   
-      //   if (state.canGoForward) {
-      //     document
-      //       .getElementById("action-go-forward")
-      //       .removeAttribute("disabled");
-      //   } else {
-      //     document
-      //       .getElementById("action-go-forward")
-      //       .setAttribute("disabled", "true");
-      //   }
+        if (state.canGoForward) {
+          document
+            .getElementById("action-go-forward")
+            .removeAttribute("disabled");
+        } else {
+          document
+            .getElementById("action-go-forward")
+            .setAttribute("disabled", "true");
+        }
   
-      //   if (state.isHomescreen) {
-      //     document
-      //       .getElementById("action-close")
-      //       .setAttribute("disabled", "true");
-      //     document.getElementById("action-home").setAttribute("disabled", "true");
-      //   } else {
-      //     document.getElementById("action-close").removeAttribute("disabled");
-      //     document.getElementById("action-home").removeAttribute("disabled");
-      //   }
-      // };
+        if (state.isHomescreen) {
+          document
+            .getElementById("action-close")
+            .setAttribute("disabled", "true");
+          document.getElementById("action-home").setAttribute("disabled", "true");
+        } else {
+          document.getElementById("action-close").removeAttribute("disabled");
+          document.getElementById("action-home").removeAttribute("disabled");
+        }
+      };
     }
   
     connectedCallback() {

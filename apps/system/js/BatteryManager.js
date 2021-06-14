@@ -8,7 +8,7 @@ var BatteryManager = {
 
   handleChargingChange: function(e) {
     console.debug('handleChargingChange', e, this._bm.charging);
-    StatusBar.showNotification('handleChargingChange');
+    // StatusBar.showNotification('handleChargingChange');
     this.sendBatteryEvent();
   },
 
@@ -24,7 +24,7 @@ var BatteryManager = {
 
   handlelevelchangeChange: function(e) {
     console.debug('levelchange', e, this._bm.level);
-    StatusBar.showNotification('Batterylevelchange');
+    // StatusBar.showNotification('Batterylevelchange');
     this.sendBatteryEvent();
   },
 
