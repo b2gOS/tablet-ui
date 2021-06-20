@@ -29,7 +29,7 @@ or talk to us on Matrix:
 
 ​	For details on how to build B2G, you can check [this section](https://github.com/b2gOS/B2G#buiding-for-devices).
 
-###### Step 2: Building and pushing Tablet-UI to your devices
+##### Step 2: Building and pushing Tablet-UI to your devices
 
 1. Install `python3`, `make` and `adb`  in your laptop
 

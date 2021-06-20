@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+
+        <title>Notes</title>
+
+        <link href="shared/style/headers.css" rel="stylesheet" type="text/css" />
+        <link href="shared/style/buttons.css" rel="stylesheet" type="text/css" />
+        <link href="shared/style/progress_activity.css" rel="stylesheet" type="text/css" />
+        <link href="style/common.css" rel="stylesheet" type="text/css" />
+        <link href="style/dialog.css" rel="stylesheet" type="text/css" />
+
+        <link rel="resource" type="application/l10n" href="locales/locales.ini">
+        <script src="shared/js/l10n.js"></script>
+        <script defer src="shared/js/lazy_loader.js"></script>
+        <script defer src="shared/js/font_size_utils.js"></script>
+
+        <script src="js/lib/evn/evernote-sdk-js/thrift/lib/thrift.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/thrift/lib/thrift-binary.js"></script>
+
+        <script src="js/lib/evn/evernote-sdk-js/generated/Errors_types.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/Limits_types.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/Types_types.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/NoteStore_types.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/UserStore_types.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/NoteStore.js"></script>
+        <script src="js/lib/evn/evernote-sdk-js/generated/UserStore.js"></script>
+
+        <script src="js/lib/oauth/oauth.js"></script>
+        <script src="js/lib/oauth/sha1.js"></script>
+
+        <script src="js/lib/enml-js/lib/xml-parser.js"></script>
+        <script src="js/lib/enml-js/lib/xml-writer.js"></script>
+        <script src="js/lib/enml-js/enml.js"></script>
+
+        <script src="js/lib/md5/js/md5.min.js"></script>
+        <script src="js/lib/sparkmd5/spark-md5.min.js"></script>
+
+        <script src="js/dialog.js"></script>
+
+        <script src="js/db.js" type="text/javascript"></script>
+        <script src="js/models.js" type="text/javascript"></script>
+        <script src="js/Console.js" type="text/javascript"></script>
+        <script src="js/Searcher.js" type="text/javascript"></script>
+        <script src="js/Cards.js" type="text/javascript"></script>
+        <script src="js/evernote.js" type="text/javascript"></script>
+        <script src="js/common.js" type="text/javascript"></script>
+    </head>
+    <body class="loading">
+        <progress class="pack-activity" value="0" max="100" role="sync"></progress>
+        <div id="container" class="cards">
+            <div class="card drawer" id="notebooks" data-gutter="50">
+                <h2 data-l10n-id="notebooks">Notebooks <b id="button-new-notebook"></b></h2>
+                <b class="card-next"></b>
+                <ul id="notebooks-list"></ul>
+                <footer>
+                    <progress role="sync"></progress>
+                    <span class="username"></span>
+                    <button id="button-settings">Settings</button>
+                    <button id="button-evernote-login"><div><span data-l10n-id="connect-with">Connect with</span> <i id="evernote-elephant"></i> <i id="evernote-text"></i></div></button>
+                </footer>
+            </div>
+            <section class="card active" id="main" role="region">
+                <header>
+                    <a href="#" class="card-prev" id="button-notebook-menu"><span class="icon icon-menu">menu</span></a>
+                    <menu type="toolbar">
+                        <button id="button-notebook-add"><span class="icon icon-add">add</span></button>
+                    </menu>
+                    <h1></h1>
+                    <h2 data-l10n-id="search-results"></h2>
+                    <input type="text" value="" id="edit-notebook-name" name="edit-notebook-name" />
+                </header>
+                <div class="content">
+                    <form method="get" action="" id="search" class="sprited">
+                        <input type="text" id="searchNotes" name="searchNotes" />
+                    </form>
+                    <progress role="loading"></progress>
+                    <ul class="notebook-notes"></ul>
+                    <div class="empty sprited" id="empty-notebook">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="footer" id="notebook-footer">
+                    <b id="button-manual-sync" class="sprited bottomcenter">Sync</b>
+                    <b id="button-notebook-search" class="sprited bottomleft">Search</b>
+                    <b id="button-notebook-sortby" class="sprited bottomright">Sort By</b>
+                </div>
+            </section>
+
+            <section class="card" id="note" role="region">
+                <header>
+                    <button id="button-note-cancel"><span class="icon icon-close">close</span></button>
+                    <menu type="toolbar">
+                        <button id="button-note-save" data-l10n-id="done">Done</button>
+                    </menu>
+                    <h1></h1>
+                    <input type="text" value="" id="edit-note-name" name="edit-note-name" />
+                </header>
+                <ul id="note-edit-actions">
+                    <li class="sprited type">Type</li>
+                    <li class="sprited photo">Attach Photo</li>
+                    <li class="sprited info">Settings</li>
+                    <li class="sprited share">Share</li>
+                    <li class="sprited delete">Delete</li>
+                </ul>
+                <div id="warning">
+                    <p data-l10n-id="warning">(Some large images or attachments cannot be downloaded. Note is read only.)</p>
+                </div>
+                <div class="content">
+                    <div id="note-content" contenteditable></div>
+                    <ul id="note-resources"></ul>
+                    <div class="empty sprited">
+                        <p data-l10n-id="tap-anywhere-to-start">tap anywhere to start</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <b id="button-note-restore" class="sprited bottomleft">Restore</b>
+                    <b id="button-note-delete" class="sprited bottomright">Delete</b>
+                </div>
+                <div id="image-fullscreen">
+                    <div class="image"></div>
+                    <div class="footer">
+                        <b id="button-resource-close" class="sprited bottomleft">Close</b>
+                        <span class="name"></span>
+                        <b id="button-resource-delete" class="sprited bottomright">Delete</b>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card" id="note-info" role="region">
+                <header>
+                    <button class="card-prev"><span class="icon icon-back">menu</span></button>
+                    <h1 data-l10n-id="note-info">Note Info</h1>
+                </header>
+                <div class="content">
+                    <ul class="fields"></ul>
+                </div>
+            </section>
+
+            <section class="card skin-organic" id="settings" role="region" data-type="list">
+                <header>
+                    <button id="button-settings-cancel"><span class="icon icon-close">close</span></button>
+                    <h1 data-l10n-id="settings">Settings</h1>
+                </header>
+                <header>
+                    <h2 data-l10n-id="connected-to-evernote">Connected to Evernote</h2>
+                </header>
+                <ul>
+                    <li><p><span data-l10n-id="signed-in-as">Signed in as</span> <span class="username"></span></p></li>
+                    <li><p data-l10n-id="account-type">Account type <em class="account"></em></p></li>
+                    <li><p data-l10n-id="upload-left">Upload left <em class="upload-left"></em></p></li>
+                    <li><p data-l10n-id="days-left">Days left <em class="days-left"></em></p></li>
+                    <li>
+                        <p class="buttons">
+                            <button data-l10n-id="sign-out" id="button-evernote-logout">Sign Out</button>
+                        </p>
+                    </li>
+                </ul>
+                <!--header>
+                    <h2 data-l10n-id="evernote-email-address">Evernote Email Address</h2>
+                </header>
+                <ul>
+                    <li>
+                        <p class="email">ranbena@everything.me</p>
+                        <p><button data-l10n-id="add-to-contacts">Add to Contacts</button></p>
+                    </li>
+                </ul-->
+                <header>
+                    <h2 data-l10n-id="current-monthly-usage">Current Monthly Usage</h2>
+                </header>
+            </section>
+        </div>
+    </body>
+</html>

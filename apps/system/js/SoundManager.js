@@ -36,8 +36,8 @@ var SoundManager = {
 
   },
 
-  observeAudioVolumeChange: function(){
-    this._audioVolumeService.observeAudioVolumeChange(this.audioVolumeChangeCallback.bind(this));
+  observeAudioVolumeChange: async function(){
+    await this._audioVolumeService.observeAudioVolumeChange(this.audioVolumeChangeCallback.bind(this));
   },
 
   unobserveAudioVolumeChange:function(){
@@ -53,11 +53,14 @@ var SoundManager = {
   },
 
 
-  start: function() {
+  start: async function() {
     this._audioVolumeService = new AudioVolumeServiceManager()
-      window.setTimeout(()=>{
-        this.observeAudioVolumeChange()
-      },3000)
+    this._audioVolumeService.init().then(()=>{
+      this.observeAudioVolumeChange()
+    })
+    //   window.setTimeout(()=>{
+    // await this.observeAudioVolumeChange()
+    //   },3000)
       return this;
   }
 
